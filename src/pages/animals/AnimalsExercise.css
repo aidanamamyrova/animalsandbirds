@@ -37,7 +37,7 @@
   border-radius: 30px;
   font-size: 22px;
   font-weight: bold;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
   text-align: center;
   box-shadow: 0 4px 10px rgba(120, 100, 60, 0.08);
 }
@@ -45,8 +45,8 @@
 .animals-matching-area {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  margin: 20px auto 0 auto;
+  max-width: 820px;
+  margin: 10px auto 0 auto;
 }
 
 .animals-arrows-svg {
@@ -66,7 +66,7 @@
 .animals-column {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 25px;
 }
 
 .animals-match-row {
@@ -86,8 +86,8 @@
 }
 
 .animal-img {
-  width: 160px;
-  height: 160px;
+  width: 125px;
+  height: 125px;
   object-fit: contain;
 }
 
@@ -178,14 +178,14 @@
 .animals-nav {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 18px;
+  gap: 30px;
+  margin-top: 8px;
   padding-bottom: 10px;
 }
 
 .animals-nav button {
   padding: 10px 35px;
-  border: 2px solid #7a8ac9;;
+  border: 2px solid #7a8ac9;
   border-radius: 30px;
   background: #cde4fe;
   font-size: 18px;
@@ -403,22 +403,6 @@
   margin-bottom: 35px;
 }
 
-.finish-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.finish-buttons button {
-  border: none;
-  padding: 14px 28px;
-  border-radius: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #e5e5e5;
-}
-
 .sound-btn {
   width: 90px;
   height: 90px;
@@ -501,6 +485,7 @@
     margin-left: 0;
     padding-top: 125px;
     overflow-y: auto;
+    background: #fffef7;
   }
 
   .animals-title {
