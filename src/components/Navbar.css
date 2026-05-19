@@ -1,0 +1,25 @@
+.navbar{
+display:flex;
+height: 40px;
+justify-content:space-between;
+align-items:center;
+background:#8dc9d8;
+padding:15px 30px;
+}
+
+.logo{
+    font-size: 36px;
+}
+
+.menu button{
+margin-left:15px;
+padding:18px 25px;
+border-radius:8px;
+border:1px solid gray;
+background:#d9eef4;
+cursor:pointer;
+}
+
+.menu button {
+    font-size: 15px;
+}

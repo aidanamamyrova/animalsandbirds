@@ -1,0 +1,121 @@
+.sidebar {
+  width: 210px;
+  background-color: #8dc9d8;
+  padding: 20px 10px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.topic-wrapper {
+  margin-bottom: 5px;
+}
+
+/* Основная кнопка темы */
+.topic {
+  background-color: #bfe2ec;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1.5px solid #6aa8b7;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.topic:hover {
+  background-color: #d6eff7;
+}
+
+.active-topic {
+  border-color: #4a90a2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Текст внутри темы */
+.topic-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-number {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.topic-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2a3a;
+}
+
+/* Стрелочка */
+.arrow {
+  font-size: 20px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+/* Подменю */
+.submenu {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 15px; 
+  animation: fadeIn 0.3s ease;
+}
+
+.submenu-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.submenu-item {
+  background-color: #76c1d4; 
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #6aa8b7;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.submenu-item:hover {
+  background-color: #5eb2c7;
+  transform: translateX(5px); /* Легкий сдвиг при наведении */
+}
+
+/* Анимация появления подменю */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topic-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.arrow-box {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s;
+  z-index: 10; /* Чтобы быть поверх ссылки */
+}
+
+.arrow-box:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}

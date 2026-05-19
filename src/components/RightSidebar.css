@@ -1,0 +1,74 @@
+.right-sidebar {
+  width: 270px;
+  padding: 1px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.new-words-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.new-words-subtitle {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.words-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.word-item-card {
+  background-color: #d1e9f0; /* Светло-голубой как на фото */
+  border-radius: 15px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.audio-icon-btn {
+  background-color: #90cada;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+
+.word-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ruu-word {
+font-size: 20px;
+  color: #605d5d;
+}
+
+.exercise-nav-btn {
+  margin-top: 5px;
+  background-color: #d1e9f0;
+  border: none;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}

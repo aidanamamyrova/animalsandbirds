@@ -1,0 +1,138 @@
+/* Общая компоновка */
+.ok-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.ok-content-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Основная рабочая область */
+.ok-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 40px 20px;
+  max-width: 950px;
+}
+
+.ok-main-title {
+  text-align: center;
+  font-size: 36px;
+  margin: 5px 0 40px 0;
+  color: #333;
+}
+
+/* Контейнер для круговой схемы */
+.ok-circle-container {
+  position: relative;
+  width: 800px; 
+  height: 600px; 
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Центр: Синий круг с учеником */
+.ok-center-image-wrap {
+  position: absolute;
+  width: 320px; 
+  height: 320px;
+  border: 5px solid #78cbda; 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  z-index: 10;
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.ok-student-img {
+  width: 105%; 
+  height: auto;
+  object-fit: contain;
+}
+
+.ok-supply-item-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%); 
+  z-index: 5;
+  width: 130px; 
+}
+
+/* Окружность предмета */
+.ok-item-circle {
+  width: 115px; 
+  height: 115px;
+  border: 2px solid #78cbda; 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.ok-supply-img {
+  height: 115px; 
+  max-width: 105px;
+  object-fit: contain;
+}
+
+/* Текстовый блок под предметом */
+.ok-text-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.ok-kg-word {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap; 
+}
+
+.ok-ru-word {
+  font-size: 15px;
+  color: #78909c; 
+  font-weight: normal;
+}
+
+/* Кнопка озвучки */
+.ok-audio-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.ok-audio-btn:hover {
+  opacity: 1;
+}
+
+/* Специфичные корректировки для некоторых картинок (если нужно) */
+.ok-supply-item-wrap:has(img[alt="Жон баштык"]) .ok-supply-img { height: 95px; }
+.ok-supply-item-wrap:has(img[alt="Сызгыч"]) .ok-supply-img { width: 115px; height: auto; }

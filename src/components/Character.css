@@ -1,0 +1,12 @@
+.character-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  z-index: 999;
+}
+
+.character-video {
+  width: 100%;
+  border-radius: 15px;
+}

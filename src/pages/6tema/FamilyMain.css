@@ -1,0 +1,231 @@
+/* Основной контейнер и заголовки */
+.family-content {
+  flex: 1;
+  padding: 1px;
+  background: #fff;
+ 
+}
+
+.family-title {
+  text-align: center;
+  color: #333;
+  font-size: 36px;
+  margin: 0 0 1px 0;
+}
+
+/* Секция с ладонью (Семейное дерево) */
+.hand-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
+.hand-container {
+  position: relative;
+  width: 700px;
+  height: 500px;
+}
+
+
+
+.hand-img {
+  width: 250px;
+  position: absolute;
+  left: 60%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Позиционирование членов семьи на пальцах */
+.member-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.pos-me      { top: 230px; left: 0px; }
+.pos-mother  { top: 80px;  left: 132px; }
+.pos-father  { top: 20px;  left: 300px; }
+.pos-grandma { top: 90px;  left: 490px; }
+.pos-grandpa { top: 220px; left: 660px; }
+
+/* Аватарки */
+.avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f9f9f9;
+  margin-bottom: 1px;
+}
+
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-family-avatar {
+  width: 170px !important;
+  height: 170px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.avatar-wrapper.small {
+  width: 220px;
+  height: 220px;
+}
+
+/* Карточки и подписи */
+.label-block {
+  text-align: center;
+  background : #d1f3fb;
+  padding: 4px 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 22px;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.gray-translate {
+  color: #888;
+  font-size: 15px;
+}
+
+/* Сетки родственников и вступления */
+.relatives-grid, .family-intro-grid {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 1px 0;
+}
+
+.family-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.rel-card, .intro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rel-card:hover, .intro-card:hover {
+  transform: translateY(-5px);
+}
+
+.intro-card img {
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 1px;
+}
+
+/* Баннеры и текст */
+.family-banner {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.full-family-img {
+  max-width: 550px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.banner-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #92e3f8;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin: -20px auto 20px;
+  width: fit-content;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 22px;
+
+}
+
+.card-text {
+  background-color: #d1f3fb;
+  border-radius: 20px;
+  padding: 5px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.kg-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 22px;
+}
+
+.ru-text {
+  color: #666;
+  margin-top: 1px;
+  font-size: 15px;
+}
+
+.section-divider {
+  text-align: center;
+  background-color: #92e3f8;
+  padding: 10px 40px;
+  border-radius: 20px;
+  margin: 1px auto 1px;
+  width: fit-content;
+}
+
+/* Грамматика (Запомните) */
+.grammar-card {
+  background-color: #fdf3c0;
+  border-radius: 30px;
+  padding: 5px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.suffix-formula {
+  border: 2px dashed #e67e22;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #e67e22;
+}
+
+.grammar-right strong {
+  color: #e67e22;
+}
+
+/* Кнопки звука */
+.sound-btn-small {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  filter: grayscale(0.5);
+}
+
+.sound-btn-small:hover {
+  filter: grayscale(0);
+}

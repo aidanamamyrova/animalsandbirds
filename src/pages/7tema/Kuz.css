@@ -1,0 +1,147 @@
+.kuz-content {
+    background-color: #ffffff;
+    padding: 1px;
+}
+
+.translation-title {
+    color: #888;
+    font-size: 36px;
+    margin-left: 10px;
+}
+
+.intro-text-bubble {
+    background-color: #e3f2fd;
+    border-radius: 20px;
+    padding: 1px 25px;
+    margin: 2px 0;
+    font-size: 20px;
+    position: relative;
+}
+
+.ru-translation-block {
+    display: block;
+    color: #757575;
+    font-size: 15px;
+    margin-top: 1px;
+}
+
+.kuz-section {
+    margin-bottom: 2px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.section-flex {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.section-flex.reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.icon-img { width: 170px !important; }
+.months-img { width: 280px !important; }
+.rain-img { width: 420px !important; border-radius: 10px; }
+.weather-img { width: 380px !important; border-radius: 10px; }
+.kuz-img-main { width: 390px !important; display: block; margin: 0 auto; }
+
+.text-group .kg-text {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.text-group .ru-text {
+    color: #9e9e9e;
+    font-size: 15px;
+    margin: 0 0 10px 0;
+}
+
+.text-group button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+
+.text-group button:hover {
+    transform: scale(1.2);
+}
+
+.multi-leaves {
+    display: flex;
+    gap: 10px;
+}
+.multi-leaves img { width: 130px!important; }
+
+.kuz-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 3px;
+}
+
+.kuz-row {
+  display: flex;
+  justify-content: space-between; /* Распределяет две карточки по краям */
+  gap: 2px;
+}
+
+.kuz-card {
+  flex: 1; 
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.section-flex {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.kg-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ru-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0 0 8px 0;
+}
+
+/* Настройки размеров изображений */
+.icon-img { width: 80px; height: auto; }
+.multi-leaves img { width: 50px; height: auto; margin-right: 5px; }
+.months-img { width: 120px; height: auto; }
+.rain-img { width: 100px; height: auto; }
+.weather-img { width: 100px; height: auto; }
+
+/* Кнопка звука */
+.kg-text button, .inline-audio {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0;
+  color: #4A90E2;
+}

@@ -1,0 +1,276 @@
+/* KimExercise.css - специфические стили */
+
+/* --- СТИЛИ ДЛЯ ШАГА 1 (КАТЕГОРИИ) --- */
+.cat-header-row, .cat-zones-row {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cat-label {
+  width: 400px;
+  padding: 5px;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.cat-label.yellow { background-color: #f9f0b5; }
+.cat-label.green { background-color: #92d9ad; }
+
+.cat-zone {
+  width: 400px;
+  min-height: 160px;
+  max-height: 180px;
+  border-radius: 25px;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+  overflow-y: auto;
+}
+
+.yellow-zone { background-color: #fff9db; border: 2px dashed #f0e4a0; }
+.green-zone { background-color: #d3f9e2; border: 2px dashed #b7e8ca; }
+
+.cat-options-pool {
+  margin-top: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.pool-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  cursor: grab;
+}
+
+.mini-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+/* --- СТИЛИ ДЛЯ ШАГОВ 2-3 (БУКВЫ) --- */
+.words-step {
+  justify-content: center;
+  align-items: center;
+}
+
+.word-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.task-img-large {
+  height: 180px;
+  object-fit: contain;
+}
+
+.letter-slots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter-box {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #7bd8ec;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  background: white;
+  cursor: pointer;
+}
+
+.letters-pool {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter-btn {
+  padding: 8px 18px;
+  font-size: 20px;
+  background: #f9f0b5;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #e6d88a;
+}
+
+.letter-btn:active { transform: translateY(2px); box-shadow: none; }
+
+/* --- СТИЛИ ДЛЯ ШАГОВ 4-5 (SELECT) --- */
+.select-step {
+  justify-content: center;
+  align-items: center;
+}
+
+.select-container {
+  text-align: center;
+}
+
+.select-container p {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.sentence-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+select {
+  padding: 2px 15px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+.correct-select {
+  border-color: #4CAF50;
+  background-color: #e8f5e9;
+}
+
+/* --- СТИЛИ ДЛЯ ШАГА 6 (СОПОСТАВЛЕНИЕ) --- */
+.match-step {
+  overflow-y: auto;
+}
+
+.kim-ex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.kim-ex-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kim-ex-card img {
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+.kim-drop-zone {
+  width: 150px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.kim-drop-zone.correct {
+  background-color: #92d9ad;
+  border: none;
+  color: #000;
+}
+
+.kim-drop-zone.wrong {
+  background-color: #ff4d4d;
+  border: none;
+  color: #fff;
+}
+
+.kim-options-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 2px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+.kim-drag-item {
+  background-color: #f9f0b5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: grab;
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+.kim-drag-item:active {
+  cursor: grabbing;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cat-label {
+    width: 100%;
+  }
+  
+  .cat-zone {
+    width: 100%;
+  }
+  
+  .pool-img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .mini-img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .task-img-large {
+    height: 150px;
+  }
+  
+  .letter-box {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .kim-ex-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}

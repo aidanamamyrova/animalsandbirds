@@ -1,0 +1,36 @@
+/* KoshtoshuuExercise.css - специфические стили */
+
+/* Облачко с текстом */
+.visual-scene-container {
+  position: relative;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.speech-bubble-top {
+  position: absolute;
+  top: -37px;
+  left: 18%;
+  transform: translateX(-50%);
+  background: #d1e9f0;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 2px solid #8dc9d8;
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.speech-bubble-top::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #8dc9d8;
+}

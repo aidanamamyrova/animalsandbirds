@@ -1,0 +1,233 @@
+/* ExerciseTemplate.css - общие стили для всех упражнений */
+
+.ex-template-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.ex-template-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sidebar-wrapper {
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ex-template-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 30px;
+  overflow: hidden;
+  min-height: 0;
+  background-color: #fff;
+}
+
+.ex-title {
+  font-size: 30px;
+  margin: 0 0 5px 0;
+  color: #333;
+  flex-shrink: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.progress-container {
+  width: 80%;
+  max-width: 600px;
+  height: 12px;
+  background-color: #e0f9e9;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4df38e, #2ecc71);
+  transition: width 0.4s ease;
+  border-radius: 10px;
+}
+
+.ex-header-banner {
+  background: linear-gradient(135deg, #8dc9d8 0%, #63c4dc 100%);
+  padding: 2px 30px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: white;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.exercise-scroll-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  padding: 5px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Навигационные кнопки */
+.ex-nav-controls {
+  display: flex;
+  gap: 50px;
+  margin-top: 20px;
+  padding: 20px 0;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 10px 35px;
+  border-radius: 30px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn.back {
+  background-color: #eee;
+  color: #131313;
+}
+
+.nav-btn.next {
+  background: linear-gradient(135deg, #8dc9d8, #63c4dc);
+  color: rgb(231, 24, 24);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Финальный экран */
+.finish-screen {
+  background: white;
+  padding: 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+  animation: scaleIn 0.6s ease;
+}
+
+.finish-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.finish-screen h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.finish-screen p {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.finish-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-retry,
+.btn-home {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.btn-retry {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+}
+
+.btn-home {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+
+.btn-retry:hover,
+.btn-home:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .ex-template-content {
+    padding: 15px;
+  }
+
+  .ex-title {
+    font-size: 22px;
+  }
+
+  .ex-header-banner {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+}

@@ -1,0 +1,264 @@
+/* MektepExercise.css - специфические стили */
+
+/* ИЗОБРАЖЕНИЕ */
+.task-image-container {
+  flex-shrink: 0;
+  margin-bottom: 5px;
+}
+
+.task-img-large {
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+/* WORD DISPLAY (SPELLING) */
+.word-display {
+  font-size: 28px;
+  letter-spacing: 5px;
+  margin: 10px 0;
+  font-weight: bold;
+  min-height: 45px;
+  border-bottom: 2px solid #4df38e;
+}
+
+.correct-text {
+  color: #2ecc71;
+}
+
+.wrong-text {
+  color: #e74c3c;
+}
+
+/* LETTERS POOL */
+.letters-pool {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.letter-chip {
+  padding: 8px 16px;
+  font-size: 20px;
+  background: #f9f0b5;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.1s;
+}
+
+.letter-chip:active {
+  transform: translateY(2px);
+}
+
+.letter-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: none;
+  border: 1px solid #888;
+  color: #888;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* QUIZ OPTIONS - ГОРИЗОНТАЛЬНО */
+.quiz-options-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.quiz-option {
+  min-width: 120px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #bebff4;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: #bebff4;
+  transform: scale(1.02);
+}
+
+.quiz-option.selected {
+  background: #bebff4;
+  border: 2px solid #bebff4;
+}
+
+.quiz-option.correct-answer {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.quiz-option.wrong-answer {
+  background: #f44336 !important;
+  color: white !important;
+}
+
+.quiz-option.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* IMAGE CLICK */
+.image-options-grid {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.image-card {
+  border: 3px solid transparent;
+  border-radius: 15px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f9f9f9;
+}
+
+.image-card img {
+  height: 280px;
+  display: block;
+  object-fit: contain;
+}
+
+.image-card.selected {
+  border-color: #bebff4;
+  background: #bebff4;
+}
+
+.image-card.correct-border {
+  border-color: #2ecc71;
+  background: #f1fbf4;
+}
+
+.image-card.wrong-border {
+  border-color: #e74c3c;
+  background: #fdf2f2;
+}
+
+
+
+/* ТЕКСТ ВОПРОСА */
+.question-text {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.question-kg {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 3px;
+}
+
+.question-ru {
+  font-size: 15px;
+  color: #7f8c8d;
+}
+
+.question-translation {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .task-img-large {
+    height: 180px;
+  }
+  
+  .image-card img {
+    height: 120px;
+  }
+  
+  .letter-chip {
+    font-size: 16px;
+    padding: 5px 12px;
+  }
+  
+  .word-display {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+  
+  .quiz-option {
+    min-width: 90px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  
+  .sentence-row {
+    font-size: 15px;
+    gap: 5px;
+  }
+  
+  .sentence-row span {
+    font-size: 15px;
+  }
+  
+  .sentence-row select {
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+  
+  .dropdown-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.task-img-large {
+  height: 270px !important;
+  width: auto !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+.image-card img {
+  height: 400px !important;
+  width: auto !important;
+}
+
+/* Максимальное уменьшение отступов */
+.question-text {
+  margin-bottom: 0px !important;
+}
+
+.quiz-options-horizontal {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+.image-card img {
+  height: 300px !important;
+  width: auto !important;
+}

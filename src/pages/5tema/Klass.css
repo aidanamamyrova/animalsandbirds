@@ -1,0 +1,133 @@
+.kl-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.kl-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.kl-main-content {
+  flex: 1;
+  padding: 1px 30px; 
+  background-color: #fff;
+}
+
+.kl-title {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Стили шапки страницы */
+.kl-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.kl-main-img {
+  max-width: 550px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.kl-intro-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 700px; 
+}
+
+.kl-bubble-row {
+  background-color: #d1e9f0;
+  border-radius: 40px;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Сетка карточек */
+.kl-items-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kl-item-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.kl-item-text-box {
+  flex: 1; 
+  background-color: #d1e9f0;
+  border-radius: 35px;
+  padding: 12px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+}
+
+.kl-item-media {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Индивидуальные размеры для фото по макету */
+/* 1. Доска и парта */
+.kl-item-card:nth-child(1) .kl-item-media img { width: 280px; height: auto; }
+/* 2. Стулья */
+.kl-item-card:nth-child(2) .kl-item-media img { width: 270px; height: auto; }
+/* 3. Окна */
+.kl-item-card:nth-child(3) .kl-item-media img { width: 290px; height: auto; }
+/* 4. Шкаф и дверь */
+.kl-item-card:nth-child(4) .kl-item-media img { width: 260px; height: auto; }
+/* 5. Ученики за партами */
+.kl-item-card:nth-child(5) .kl-item-media img { width: 300px; height: auto; }
+/* 6. Учитель и ученик */
+.kl-item-card:nth-child(6) .kl-item-media img { width: 300px; height: auto; }
+
+/* Общие стили текста */
+.kl-text-content {
+  flex: 1;
+}
+
+.kl-kg {
+  
+  font-size: 22px;
+  margin: 0;
+ 
+}
+
+.kl-ru {
+  font-size: 15px;
+  color: #546e7a;
+  margin: 2px 0 0 0;
+}
+
+.kl-audio-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  transition: transform 0.1s;
+}
+
+.kl-audio-btn:hover {
+  transform: scale(1.1);
+}

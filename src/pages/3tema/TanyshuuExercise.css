@@ -1,0 +1,169 @@
+/* TanyshuuExercise.css - специфические стили */
+
+/* ИЗОБРАЖЕНИЕ */
+.task-image-container {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.task-img-large {
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.mektep-img {
+  max-height: 180px;
+}
+
+/* ТЕКСТ ВОПРОСА */
+.question-text {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.question-kg {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 3px;
+}
+
+/* Scramble (Буквы) */
+.slots-row {
+  display: flex;
+  gap: 12px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.drop-slot {
+  width: 55px;
+  height: 55px;
+  border: 2px solid #7bd8ec;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.drop-slot.correct {
+  background-color: #66f877 !important;
+  border-color: #2dcc70;
+}
+
+.drop-slot.wrong {
+  background-color: #ff4d4d !important;
+  border-color: #c0392b;
+  color: white;
+}
+
+.letters-pool {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.drag-item.letter {
+  font-size: 24px;
+  padding: 8px 20px;
+  background: #f9f0b5;
+  border-radius: 12px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.drag-item.letter:hover {
+  transform: scale(1.05);
+}
+
+.drag-item.letter:active {
+  cursor: grabbing;
+}
+
+/* Quiz Options - горизонтально */
+.quiz-options-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.quiz-option {
+  min-width: 140px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background: #d1e9f0;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: #d1e9f0;
+  transform: scale(1.02);
+}
+
+.quiz-option.correct-answer {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.quiz-option.wrong-answer {
+  background: #f44336 !important;
+  color: white !important;
+}
+
+.quiz-option.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .drop-slot {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  .drag-item.letter {
+    font-size: 20px;
+    padding: 6px 15px;
+  }
+  
+  .quiz-option {
+    min-width: 110px;
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+  
+  .question-kg {
+    font-size: 18px;
+  }
+  
+  .task-img-large {
+    max-height: 140px;
+  }
+}

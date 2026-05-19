@@ -1,0 +1,232 @@
+/* TusExercise.css - уникальные стили для упражнения Түстер */
+/* Все классы имеют префикс tus- для избежания конфликтов */
+
+/* Контейнер для пропущенных букв */
+.tus-missing-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tus-missing-card {
+  background: white;
+  padding: 25px 35px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.tus-word-display {
+  margin-bottom: 25px;
+}
+
+.tus-word-text {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2c3e50;
+  letter-spacing: 5px;
+  background: #f0f0f0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+/* Matching контейнеры */
+.tus-matching-container-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+}
+
+.tus-matching-row-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.tus-matching-row-words {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.tus-match-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tus-match-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 15px;
+  background: #f5f5f5;
+  padding: 10px;
+  border: 3px solid #ddd;
+}
+
+.tus-match-text {
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #e0f7fa;
+  border: 2px solid #b2dfdb;
+  font-size: 22px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+}
+
+.tus-match-item.active .tus-match-img,
+.tus-match-item.active .tus-match-text {
+  border-color: #ff9800;
+  background-color: #fff3e0;
+  transform: scale(1.02);
+}
+
+.tus-match-item.matched .tus-match-img,
+.tus-match-item.matched .tus-match-text {
+  opacity: 0.5;
+  border-color: #4caf50;
+  background-color: #c8e6c9;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Картинки */
+.tus-task-image-container {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.tus-task-img-large {
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.tus-question-translation {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Кнопки выбора */
+.tus-quiz-options-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.tus-quiz-option {
+  min-width: 120px;
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: 500;
+  background: #7bc6cf;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tus-quiz-option:hover:not(:disabled) {
+  background: #5baab5;
+  transform: scale(1.02);
+}
+
+.tus-quiz-option.correct-answer {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.tus-quiz-option.wrong-answer {
+  background: #f44336 !important;
+  color: white !important;
+}
+
+.tus-quiz-option.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 768px) {
+  .tus-missing-card {
+    padding: 15px 25px;
+  }
+  
+  .tus-word-text {
+    font-size: 24px;
+  }
+  
+  .tus-match-img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .tus-match-text {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+  
+  .tus-quiz-option {
+    min-width: 90px;
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+  
+  .tus-task-img-large {
+    max-height: 140px;
+  }
+}
+
+/* Увеличение картинок в упражнениях 3-5 */
+.tus-step-content .tus-task-image-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.tus-step-content .tus-task-img-large {
+  max-height: 400px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Для картинки доски (такта) */
+.tus-step-content .tus-task-img-large[alt="task"] {
+  max-height: 350px;
+}
+
+/* Для картинки девушки */
+.tus-step-content .tus-task-img-large[alt="task"] {
+  max-height: 400px;
+}
+
+/* Для картинки ручки */
+.tus-step-content .tus-task-img-large[alt="task"] {
+  max-height: 300px;
+}

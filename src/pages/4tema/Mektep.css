@@ -1,0 +1,137 @@
+.mt-container {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.mt-layout {
+  display: flex;
+  min-height: 100vh;
+  margin-bottom: 30px;
+}
+
+.mt-main-content {
+  flex: 1;
+  padding: 0px 20px;
+  background-color: #fff;
+}
+
+.mt-title {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 0; 
+  margin-bottom: 0px;
+}
+
+/* Стили для блока с картинкой школы */
+.mt-school-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 1px;
+}
+
+.mt-school-img {
+  max-width: 670px;
+  width: 100%;
+}
+
+.mt-intro-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 500px;
+  max-width: 650px; 
+}
+
+.mt-intro-bubble {
+  background-color: #d1e9f0;
+  border-radius: 40px;
+  padding: 8px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Сетка карточек */
+.mt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+}
+
+.mt-card {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  width: 100%;
+}
+
+.mt-card-media {
+  display: flex;
+  justify-content: center;
+  margin-right: 0; 
+}
+
+.mt-card-body {
+  flex: 1;
+  background-color: #e1f5fe;
+  border-radius: 35px;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+ 
+  width: 100%;
+}
+
+.mt-card-text {
+  flex: 1;
+  
+  padding-right: 10px; 
+}
+
+
+
+.mt-card-media img {
+  object-fit: contain;
+}
+
+/* 1. Учительница */
+.mt-grid .mt-card:nth-child(1) img { width: 250px; height: 320px; }
+/* 2. Учитель */
+.mt-grid .mt-card:nth-child(2) img {  width: 250px; height: 320px; }
+/* 3. Азат (мальчик) */
+.mt-grid .mt-card:nth-child(3) img { width: 250px; height: 300px; }
+/* 4. Айдай (девочка) */
+.mt-grid .mt-card:nth-child(4) img { width: 250px; height: 300px; }
+/* 5. Назик (пишет) */
+.mt-grid .mt-card:nth-child(5) img { width: 250px; height: 300px; }
+/* 6. Группа учеников */
+.mt-grid .mt-card:nth-child(6) img { width: 280px; height: 200px; }
+/* 7. Читают книги */
+.mt-grid .mt-card:nth-child(7) img { width: 260px; height: 200px; }
+/* 8. Учитель у доски */
+.mt-grid .mt-card:nth-child(8) img { width: 290px; height: 200px; }
+
+/* Общие стили текста */
+.mt-kg, .mt-card-kg {  font-size: 20px; margin: 0; }
+.mt-ru, .mt-card-ru { font-size: 15px; color: #546e7a; margin: 2px 0 0 0; }
+
+/* Кнопка звука */
+.mt-audio-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.1s;
+}
+
+.mt-audio-btn:hover {
+  transform: scale(1.1);
+}

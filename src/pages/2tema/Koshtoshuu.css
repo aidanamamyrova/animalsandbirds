@@ -1,0 +1,105 @@
+/* Общая компоновка */
+.ks-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.ks-content-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: #ffffff;
+}
+
+/* Основная рабочая область */
+.ks-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px 40px 40px;
+  max-width: 900px;
+  min-width: 600px;
+}
+
+.ks-main-title {
+  text-align: center;
+  font-size: 36px;
+  margin: 1px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ks-gray-subtitle {
+  font-size: 22px;
+  color: #78909c;
+  font-weight: normal;
+}
+
+/* Сетка и Ряды */
+.ks-dialogue-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ks-row {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.ks-flex-around {
+  justify-content: space-around;
+}
+
+.ks-mt-lg {
+  margin-top: 10px;
+}
+
+/* Элемент персонажа */
+.ks-char-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 330px;
+}
+
+/* Пузыри текста */
+.ks-bubble {
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+}
+
+.ks-bubble.ks-blue { background: #d1f3fb; border: 1px solid #d1f3fb; }
+.ks-bubble.ks-teal { background: #d1f3fb; border: 1px solid #d1f3fb; }
+
+.ks-gray-text {
+  display: block;
+  color: #78909c;
+  font-size: 15px;
+  margin-top: 6px;
+  font-weight: normal;
+}
+
+/* Изображения */
+.ks-img-md {
+  height: 290px;
+  object-fit: contain;
+}
+
+/* Кнопка перехода к упражнению */
+.ks-action-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+

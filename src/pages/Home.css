@@ -1,0 +1,71 @@
+.layout {
+  display: flex; 
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+/* Основная часть с контентом */
+.content {
+  flex: 1; 
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content h1 {
+  color: #0c0c0c;
+  margin-bottom: 2px;
+  font-size: 42px;
+
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.images img {
+  width: 550px;
+  margin-bottom: 1px;
+  
+}
+
+/* Сетка для карточек тем */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.topics a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.topicCard {
+  background: #d1f3fb;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+
+.topicCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: #d1f3fb;
+}
+
+.topicCard img {
+  width: 120px;
+  margin-bottom: 1px;
+  border-radius: 15px;
+}
+
+.topicCard p {
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0;
+  color: #333;
+}

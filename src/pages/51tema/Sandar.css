@@ -1,0 +1,135 @@
+.sn-container { display: flex;
+   flex-direction: column;
+   padding: 1px;
+    margin-bottom: 1px;  }
+
+.sn-layout { display: flex;
+   min-height: 100vh; }
+
+.sn-main-content { flex: 1; 
+  padding: 1px 40px;
+   background-color: #fff; 
+   text-align: center; }
+
+.sn-title { font-size: 36px; 
+  margin-bottom: 2px; }
+
+/* Счетчик */
+.sn-counter-section { margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; }
+.sn-big-num { font-size: 80px; font-weight: bold; line-height: 1; }
+.sn-star { color: #fdd835; font-size: 24px; margin: 5px 0; }
+.sn-controls { display: flex; align-items: center; gap: 20px; }
+.sn-minus, .sn-plus { 
+  width: 70px; height: 70px; border-radius: 50%; border: none; 
+  color: white; font-size: 24px; cursor: pointer; font-weight: bold;
+}
+.sn-minus { background-color: red; }
+.sn-plus { background-color: #4cfc4c; }
+
+.sn-count-text { display: flex; flex-direction: column; min-width: 80px; }
+.sn-kg-main { font-size: 28px; font-weight: 500; }
+.sn-ru-sub { font-size: 15px; color: #888; } /* Серый перевод */
+
+/* Сетка цифр */
+.sn-numbers-grid { 
+  display: grid; grid-template-columns: repeat(5, 1fr); 
+  gap: 15px; max-width: 600px; margin: 0 auto 10px; 
+}
+.sn-num-bubble { 
+  background-color: #d1f3fb; border-radius: 30px; 
+  padding: 10px; font-size: 32px; cursor: pointer; 
+}
+
+.sn-divider { border: 0.5px solid #ccc; width: 100%; margin: 2px 0; }
+
+/* Примеры */
+.sn-examples { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+.sn-ex-row { display: flex; align-items: center; gap: 30px; width: 100%; }
+.sn-ex-img { height: 110px; object-fit: contain; }
+.sn-ex-label { 
+  background-color: #d1f3fb; border-radius: 25px; 
+  padding: 8px 20px; display: flex; align-items: center; gap: 15px; 
+}
+
+.sn-text-group { display: flex; flex-direction: column; align-items: flex-start; }
+.sn-kg-text { font-size: 20px; font-weight: 500; }
+.sn-ru-text { font-size: 15px; color: #888; } 
+
+.sn-audio-btn { background: none; border: none; cursor: pointer; font-size: 18px; }
+
+/* Диалог */
+.sn-dialogue-box { display: flex; align-items: flex-end; gap: 20px; margin-top: 10px; }
+.sn-dialogue-bubble { 
+  background-color: #d1f3fb; border-radius: 30px; 
+  padding: 15px 25px; text-align: left; 
+}
+.sn-dialogue-bubble p { margin: 0; font-size: 18px; }
+.sn-ru-dialog { font-size: 13px; color: #888; display: block; margin-bottom: 8px; }
+.sn-dialog-img { height: 250px; }
+
+/* ... (предыдущие стили для контейнера и заголовка) */
+
+.sn-examples-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Создает две равные колонки */
+  gap: 30px 40px; /* Отступы между рядами и колонками */
+  padding: 20px;
+  align-items: center;
+}
+
+.sn-ex-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.sn-ex-img {
+  width: 130px; /* Фиксированная ширина для картинок, чтобы всё было ровно */
+  height: auto;
+  object-fit: contain;
+}
+
+.sn-ex-label {
+  background-color: #e1f5fe;
+  border-radius: 20px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 140px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.sn-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sn-kg-text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.sn-ru-text {
+  font-size: 15px;
+  color: #78909c; 
+}
+
+.sn-audio-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+/* Стили для активной цифры в сетке */
+.sn-num-bubble.active {
+  background-color: #4fc3f7;
+  color: white;
+}
+
+/* Остальные стили из вашего проекта... */

@@ -1,0 +1,272 @@
+/* OkuExercise.css - специфические стили */
+
+/* MATCHING - ГОРИЗОНТАЛЬНОЕ РАСПОЛОЖЕНИЕ */
+.matching-container-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.matching-row-words {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.matching-row-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.match-item {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: #e0f7fa;
+  border: 2px solid #b2dfdb;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s;
+  min-width: 110px;
+  text-align: center;
+}
+
+.match-item.matched {
+  background-color: #c8e6c9;
+  border-color: #4caf50;
+  color: #2e7d32;
+  cursor: default;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.match-item:disabled {
+  cursor: not-allowed;
+}
+
+.match-image-item {
+  width: 140px;
+  height: 140px;
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fafafa;
+  overflow: hidden;
+}
+
+.match-image-item:hover {
+  transform: scale(1.02);
+  border-color: #4caf50;
+}
+
+.match-image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+.match-image-item.matched-img {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+  cursor: default;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* FILL LETTERS */
+.fill-letters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.word-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.char-box {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8f4f8;
+  border: 2px solid #b2dfdb;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.char-box.correct {
+  background-color: #a5d6a7;
+  border-color: #4caf50;
+}
+
+.char-box.wrong {
+  background-color: #ef9a9a;
+  border-color: #f44336;
+}
+
+.char-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #2196f3;
+  outline: none;
+  border-radius: 10px;
+}
+
+.char-box input:focus {
+  background-color: #bbdef5;
+}
+
+.char-box input:disabled {
+  color: #333;
+}
+
+/* DROPDOWN SENTENCE */
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.sentence-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #f5f5f5;
+  padding: 15px 20px;
+  border-radius: 20px;
+  border: 2px solid #e0e0e0;
+}
+
+.sentence-word {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  background: white;
+  padding: 6px 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sentence-select {
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: 2px solid #b2dfdb;
+  background: white;
+  cursor: pointer;
+  min-width: 120px;
+  text-align: center;
+}
+
+.sentence-select:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.correct-select {
+  border-color: #4caf50 !important;
+  background-color: #e8f5e9;
+}
+
+.wrong-select {
+  border-color: #f44336 !important;
+  background-color: #fdf2f2;
+}
+
+/* MULTI-CHOICE ПОДСВЕТКА */
+.quiz-option.correct-highlight {
+  background: #4caf50 !important;
+  color: white !important;
+  border: none !important;
+  animation: pulseCorrect 0.4s ease;
+}
+
+.quiz-option.wrong-highlight {
+  background: #f44336 !important;
+  color: white !important;
+  border: none !important;
+  animation: shakeError 0.4s ease;
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulseCorrect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .match-item {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 80px;
+  }
+  
+  .match-image-item {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .char-box {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .char-box input {
+    font-size: 16px;
+  }
+  
+  .sentence-word {
+    font-size: 14px;
+    padding: 4px 10px;
+  }
+  
+  .sentence-select {
+    font-size: 12px;
+    padding: 5px 10px;
+    min-width: 90px;
+  }
+  
+  .sentence-row {
+    padding: 10px;
+    gap: 8px;
+  }
+}

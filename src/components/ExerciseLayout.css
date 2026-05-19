@@ -1,0 +1,175 @@
+/* ExerciseLayout.css - ГЛАВНЫЙ ФАЙЛ ДЛЯ УБИРАНИЯ СКРОЛЛА В УПРАЖНЕНИЯХ */
+
+/* Вся страница упражнения - фиксированная высота */
+.ex-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Лейаут: Sidebar + Контент */
+.ex-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Sidebar - МОЖЕТ скроллиться (оставляем как есть) */
+.ex-layout .sidebar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+/* Основной контент упражнения - НЕ СКРОЛЛИТСЯ */
+.ex-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow: hidden;
+  min-height: 0;
+  padding: 10px 20px;
+  position: relative;
+}
+
+/* Заголовок упражнения - фиксированный */
+.ex-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 5px 0;
+  flex-shrink: 0;
+  color: #333;
+}
+
+/* Контейнер, который предотвращает скролл */
+.ex-scroll-prevent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Прогресс бар - общий стиль для всех упражнений */
+.ex-progress-container {
+  width: 80%;
+  max-width: 500px;
+  height: 12px;
+  background-color: #e0f2f1;
+  border-radius: 10px;
+  margin: 10px auto;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ex-progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+/* Кнопки навигации - общие */
+.ex-nav-controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 15px 0;
+  flex-shrink: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.ex-nav-btn {
+  padding: 12px 40px;
+  border-radius: 40px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ex-nav-btn.prev {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.ex-nav-btn.prev:hover:not(:disabled) {
+  background: #bdbdbd;
+}
+
+.ex-nav-btn.prev:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ex-nav-btn.next {
+  background: #4caf50;
+  color: white;
+}
+
+.ex-nav-btn.next:hover {
+  background: #388e3c;
+}
+
+/* Финальный экран - общий */
+.ex-finish-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.ex-finish-icon {
+  font-size: 80px;
+  animation: exBounce 0.5s ease;
+}
+
+@keyframes exBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.ex-finish-screen h2 {
+  font-size: 36px;
+  color: #4caf50;
+}
+
+.ex-finish-screen p {
+  font-size: 20px;
+  color: #666;
+}
+
+.ex-finish-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.ex-btn-retry {
+  background: #ff9800;
+  color: white;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.ex-btn-home {
+  background: #2196f3;
+  color: white;
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}

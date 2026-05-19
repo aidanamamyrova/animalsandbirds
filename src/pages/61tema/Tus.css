@@ -1,0 +1,124 @@
+.tus-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tus-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.tus-main-content {
+  flex: 1;
+  padding: 1px 20px;
+  background-color: #fff;
+}
+
+.tus-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 2px;
+  color: #333;
+}
+
+/* Сетка карандашей */
+.tus-pencils-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Создаем 4 колонки */
+  gap: 20px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+/* Настройка: первые 3 карандаша в первом ряду, 4 во втором */
+.tus-pencil-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tus-img-wrap img {
+  height: 160px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.tus-label-bubble {
+  background-color: #e1f5fe;
+  border-radius: 25px;
+  padding: 6px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 130px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Примеры внизу */
+.tus-examples-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 50px;
+  padding: 0 20px;
+}
+
+.tus-ex-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tus-ex-bubble {
+  flex: 1;
+  background-color: #e1f5fe;
+  border-radius: 40px;
+  padding: 12px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tus-ex-image img {
+  width: 90px;
+  height: auto;
+}
+
+/* Стили текста и перевода */
+.tus-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tus-kg {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.tus-ru {
+  font-size: 13px;
+  color: #78909c; /* Серый цвет для перевода */
+  margin: 0;
+}
+
+.tus-kg-large {
+  font-size: 24px;
+  margin: 0;
+}
+
+.tus-ru-small {
+  font-size: 14px;
+  color: #78909c;
+  margin-top: 2px;
+}
+
+.tus-audio-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  margin-left: 8px;
+}
+

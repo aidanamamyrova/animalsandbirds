@@ -1,0 +1,150 @@
+.kim-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.kim-content {
+  flex: 1;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.main-title {
+  font-size: 36px;
+  margin-bottom: 3px;
+  margin: 1px;
+}
+
+.kim-section {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Овальные заголовки вопросов */
+.question-header {
+  padding: 10px 60px;
+  border-radius: 50px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+  min-width: 300px;
+}
+
+.yellow { background-color: #e1f5fe; }
+.green { background-color: #f9f0b5; }
+
+/* Сетка 3 в ряд */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.kim-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.kim-card img {
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Размеры для специфичных картинок предметов */
+.img-small { height: 120px !important; }
+.img-med { height: 150px !important; }
+
+/* Подписи под картинками */
+.caption {
+  padding: 8px 25px;
+  border-radius: 20px;
+  font-size: 22px;
+  text-align: center;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.yellow-cap { background-color: #e1f5fe; }
+.green-cap { background-color: #f9f0b5; }
+
+/* Адаптация подSidebar */
+.layout-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+/* Перевод в заголовках */
+.header-ru, .title-ru {
+  font-size: 0.7em;
+  color: #666;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+/* Перевод под карточками */
+.trans-ru {
+  font-size: 15px;
+  color: #555;
+  font-weight: normal;
+  margin-top: 1px;
+  padding-top: 1px;
+}
+
+/* Чтобы текст в карточке выравнивался по центру */
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.audio-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  transition: transform 0.1s;
+}
+
+.audio-btn:hover {
+  transform: scale(1.1);
+}
+
+
+.kg-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* по центру */
+  gap: 8px; /* расстояние между текстом и кнопкой */
+}
+
+.audio-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #e0e0e0;
+  border: none;
+  margin: 20px 0;
+}
