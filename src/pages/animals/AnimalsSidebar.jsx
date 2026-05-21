@@ -3,8 +3,8 @@ import "./AnimalsSidebar.css";
 
 function AnimalsSidebar() {
   const menuData = [
-    { title: "Үй/Жапайы жаныбарлары", path: "/animals-aidana" },
-    { title: "Канаттуулар", path: "/animals-aidana/birds" },
+    { title: "Үй/Жапайы жаныбарлары", path: "/animals" },
+    { title: "Канаттуулар", path: "/animals/birds" },
   ];
 
   return (

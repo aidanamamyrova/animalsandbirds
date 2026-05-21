@@ -328,7 +328,7 @@ function AnimalsExercise() {
 
       <div className="animals-header">
         {currentMatching && currentMatching.title}
-        {currentWriteGame && "Туура жаз"}
+        {currentWriteGame && "Туура толтур"}
         {currentStep === 8 && "Жаныбарларды бөлүштүр"}
       </div>
 

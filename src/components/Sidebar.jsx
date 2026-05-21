@@ -40,8 +40,8 @@ function Sidebar() {
        // { id: 10, title: "Жемиштер", path: "/jemish", words: "/uibuloo-words", exercise: "/jemish-exercise" },
 { id: 9,
   title: "Жаныбарлар",
-  path: "/animals-aidana",
-  exercise: "/animals-aidana"
+  path: "/animals",
+  exercise: "/animals"
 },
 
   ];
