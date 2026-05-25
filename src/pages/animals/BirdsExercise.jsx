@@ -24,6 +24,9 @@ function BirdsExercise() {
   const [showWriteErrors, setShowWriteErrors] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 
+  // Для мобильного выбора кликом
+  const [selectedMobileBird, setSelectedMobileBird] = useState(null);
+
   const [placedGroups, setPlacedGroups] = useState({
     domestic: [],
     forest: [],
@@ -36,6 +39,14 @@ function BirdsExercise() {
   const containerRef = useRef(null);
   const audioRef = useRef(null);
 
+  // Динамические рефы для 4 зон обитания птиц (нужны для мобильного touchEnd)
+  const zoneRefs = {
+    domestic: useRef(null),
+    forest: useRef(null),
+    steppe: useRef(null),
+    lake: useRef(null)
+  };
+
   const totalSteps = 10;
 
   const playSound = (audioFile) => {
@@ -46,7 +57,6 @@ function BirdsExercise() {
       audioRef.current.currentTime = 0;
     }
 
-    // Использование корректного URL для хостинга
     const audio = new Audio(getAudioUrl(audioFile));
     audioRef.current = audio;
     audio.play().catch(err => console.log("Аудио катасы:", err));
@@ -67,7 +77,6 @@ function BirdsExercise() {
       ],
       correct: { l1: "r3", l2: "r1", l3: "r2" },
     },
-
     4: {
       title: "Ким кайда жашайт?",
       left: [
@@ -82,7 +91,6 @@ function BirdsExercise() {
       ],
       correct: { l1: "r1", l2: "r2", l3: "r3" },
     },
-
     7: {
       title: "Ким кандай үн чыгарат?",
       left: [
@@ -98,7 +106,6 @@ function BirdsExercise() {
       correct: { l1: "r3", l2: "r1", l3: "r2" },
       soundMode: true,
     },
-
     8: {
       title: "Ким кандай үн чыгарат?",
       left: [
@@ -117,48 +124,23 @@ function BirdsExercise() {
   };
 
   const writeGames = {
-    1: {
-      word: ["Т", "О", "О", "К"],
-      letters: ["О", "К", "Т", "О"],
-      img: "chicken.png",
-    },
-    2: {
-      word: ["Ө", "Р", "Д", "Ө", "К"],
-      letters: ["Д", "Ө", "К", "Р", "Ө"],
-      img: "duck.png",
-    },
-    3: {
-      word: ["К", "А", "З"],
-      letters: ["З", "К", "А"],
-      img: "goose.png",
-    },
-    5: {
-      word: ["Л", "Е", "Й", "Л", "Е", "К"],
-      letters: ["Е", "К", "Й", "Л", "Л", "Е"],
-      img: "stork.png",
-      clickMode: true,
-    },
-    6: {
-      word: ["Ү", "К", "Ү"],
-      letters: ["Ү", "К", "Ү"],
-      img: "sova.png",
-      clickMode: true,
-    },
+    1: { word: ["Т", "О", "О", "К"], letters: ["О", "К", "Т", "О"], img: "chicken.png" },
+    2: { word: ["Ө", "Р", "Д", "Ө", "К"], letters: ["Д", "Ө", "К", "Р", "Ө"], img: "duck.png" },
+    3: { word: ["К", "А", "З"], letters: ["З", "К", "А"], img: "goose.png" },
+    5: { word: ["Л", "Е", "Й", "Л", "Е", "К"], letters: ["Е", "К", "Й", "Л", "Л", "Е"], img: "stork.png", clickMode: true },
+    6: { word: ["Ү", "К", "Ү"], letters: ["Ү", "К", "Ү"], img: "sova.png", clickMode: true },
   };
 
   const groupBirds = [
     { id: "chicken", name: "Тоок", img: "chicken.png", group: "domestic" },
     { id: "turkey", name: "Индюк", img: "turkey.png", group: "domestic" },
     { id: "sparrow", name: "Таранчы", img: "taranchy.png", group: "domestic" },
-
     { id: "eagle", name: "Бүркүт", img: "berkut.png", group: "steppe" },
     { id: "owl", name: "Үкү", img: "sova.png", group: "forest" },
     { id: "crow", name: "Карга", img: "karga.png", group: "forest" },
-
     { id: "stork", name: "Лейлек", img: "stork.png", group: "lake" },
     { id: "swallow", name: "Чабалекей", img: "chabalekey.png", group: "forest" },
     { id: "falcon", name: "Ителги", img: "itelgi.png", group: "steppe" },
-
     { id: "duck", name: "Өрдөк", img: "duck.png", group: "lake" },
     { id: "goose", name: "Каз", img: "goose.png", group: "lake" },
     { id: "swan", name: "Ак куу", img: "swan.png", group: "lake" },
@@ -174,14 +156,10 @@ function BirdsExercise() {
 
   const currentMatching = matchingGames[currentStep];
   const currentWriteGame = writeGames[currentStep];
-
   const correctWord = currentWriteGame?.word || [];
   const letters = currentWriteGame?.letters || [];
 
-  const isMatched = (id) =>
-    connections.some(
-      (conn) => (conn.start.id === id || conn.end.id === id) && conn.isCorrect
-    );
+  const isMatched = (id) => connections.some((conn) => (conn.start.id === id || conn.end.id === id) && conn.isCorrect);
 
   const resetStepState = () => {
     setConnections([]);
@@ -192,6 +170,7 @@ function BirdsExercise() {
     setUsedLetterIds([]);
     setShowWriteErrors(false);
     setGroupError(false);
+    setSelectedMobileBird(null);
 
     if (audioRef.current) {
       audioRef.current.pause();
@@ -218,29 +197,21 @@ function BirdsExercise() {
     }
 
     if (activeStart.side !== side) {
-      const isCorrect =
-        side === "right"
-          ? currentMatching.correct[activeStart.id] === id
-          : currentMatching.correct[id] === activeStart.id;
+      const isCorrect = side === "right" 
+        ? currentMatching.correct[activeStart.id] === id 
+        : currentMatching.correct[id] === activeStart.id;
 
-      setConnections((prev) => [
-        ...prev,
-        { start: activeStart, end: point, isCorrect },
-      ]);
+      setConnections((prev) => [...prev, { start: activeStart, end: point, isCorrect }]);
 
       if (isCorrect) {
         setCorrectDots((prev) => [...prev, activeStart.id, point.id]);
       } else {
         setWrongDots((prev) => [...prev, activeStart.id, point.id]);
-
         setTimeout(() => {
-          setWrongDots((prev) =>
-            prev.filter((d) => d !== activeStart.id && d !== point.id)
-          );
+          setWrongDots((prev) => prev.filter((d) => d !== activeStart.id && d !== point.id));
         }, 500);
       }
     }
-
     setActiveStart(null);
   };
 
@@ -250,28 +221,21 @@ function BirdsExercise() {
 
   const handleDrop = (e, index) => {
     e.preventDefault();
-
     const letterData = JSON.parse(e.dataTransfer.getData("letterData"));
     const newLetters = [...placedLetters];
 
     if (newLetters[index]) {
-      setUsedLetterIds((prev) =>
-        prev.filter((id) => id !== newLetters[index].id)
-      );
+      setUsedLetterIds((prev) => prev.filter((id) => id !== newLetters[index].id));
     }
 
     newLetters[index] = letterData;
-
     setPlacedLetters(newLetters);
     setUsedLetterIds((prev) => [...prev, letterData.id]);
     setShowWriteErrors(true);
   };
 
   const handleLetterClick = (letterData) => {
-    const emptyIndex = placedLetters.findIndex(
-      (item, index) => index < correctWord.length && item === null
-    );
-
+    const emptyIndex = placedLetters.findIndex((item, index) => index < correctWord.length && item === null);
     if (emptyIndex === -1) return;
 
     const newLetters = [...placedLetters];
@@ -284,48 +248,30 @@ function BirdsExercise() {
 
   const handleSlotClick = (index) => {
     const selectedLetter = placedLetters[index];
-
     if (!selectedLetter) return;
 
     const newLetters = [...placedLetters];
     newLetters[index] = null;
 
     setPlacedLetters(newLetters);
-    setUsedLetterIds((prev) =>
-      prev.filter((id) => id !== selectedLetter.id)
-    );
+    setUsedLetterIds((prev) => prev.filter((id) => id !== selectedLetter.id));
   };
 
   const getLetterClass = (letterData, index) => {
     if (!letterData) return "animal-drop-slot";
-
-    if (letterData.letter === correctWord[index]) {
-      return "animal-drop-slot correct";
-    }
-
-    return showWriteErrors
-      ? "animal-drop-slot wrong shake-error"
-      : "animal-drop-slot wrong";
+    if (letterData.letter === correctWord[index]) return "animal-drop-slot correct";
+    return showWriteErrors ? "animal-drop-slot wrong shake-error" : "animal-drop-slot wrong";
   };
 
-  const handleBirdGroupDrag = (e, birdId) => {
-    e.dataTransfer.setData("birdId", birdId);
-  };
-
-  const handleGroupDrop = (e, groupName) => {
-    e.preventDefault();
-
-    const birdId = e.dataTransfer.getData("birdId");
+  // Универсальная функция обработки перемещения
+  const processGroupPlacement = (birdId, groupName) => {
     const bird = groupBirds.find((item) => item.id === birdId);
-
     if (!bird) return;
 
     if (bird.group === groupName) {
       setPlacedGroups((prev) => ({
         ...prev,
-        [groupName]: prev[groupName].includes(birdId)
-          ? prev[groupName]
-          : [...prev[groupName], birdId],
+        [groupName]: prev[groupName].includes(birdId) ? prev[groupName] : [...prev[groupName], birdId],
       }));
       setGroupError(false);
     } else {
@@ -334,10 +280,48 @@ function BirdsExercise() {
     }
   };
 
-  const isBirdPlaced = (id) => {
-    return Object.values(placedGroups).some((group) => group.includes(id));
+  const handleBirdGroupDrag = (e, birdId) => {
+    e.dataTransfer.setData("birdId", birdId);
   };
 
+  const handleGroupDrop = (e, groupName) => {
+    e.preventDefault();
+    const birdId = e.dataTransfer.getData("birdId");
+    processGroupPlacement(birdId, groupName);
+  };
+
+  // Функция фиксации ПТИЦ НА МОБИЛЬНЫХ (TouchEnd)
+  const handleBirdTouchEnd = (e, birdId) => {
+    const touch = e.changedTouches[0];
+    const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (!targetEl) return;
+
+    // Проверяем попадание в одну из 4 зон
+    let foundZone = null;
+    Object.keys(zoneRefs).forEach((zoneKey) => {
+      if (zoneRefs[zoneKey].current && zoneRefs[zoneKey].current.contains(targetEl)) {
+        foundZone = zoneKey;
+      }
+    });
+
+    if (foundZone) {
+      processGroupPlacement(birdId, foundZone);
+    }
+  };
+
+  // Выбор птицы кликом на телефонах
+  const handleMobileBirdSelect = (bird) => {
+    setSelectedMobileBird(selectedMobileBird?.id === bird.id ? null : bird);
+  };
+
+  const handleMobileZoneClick = (zoneKey) => {
+    if (selectedMobileBird) {
+      processGroupPlacement(selectedMobileBird.id, zoneKey);
+      setSelectedMobileBird(null);
+    }
+  };
+
+  const isBirdPlaced = (id) => Object.values(placedGroups).some((group) => group.includes(id));
   const removeBirdFromGroup = (birdId, groupName) => {
     setPlacedGroups((prev) => ({
       ...prev,
@@ -366,11 +350,8 @@ function BirdsExercise() {
       <div className="finish-screen">
         <div className="finish-card">
           <div className="finish-icon">🏆</div>
-
           <h1>Азаматсың!</h1>
-
           <p>Көнүгүүнүн аягы</p>
-
           <button
             className="restart-btn"
             onClick={() => {
@@ -381,12 +362,7 @@ function BirdsExercise() {
               setPlacedLetters(Array(8).fill(null));
               setShowWriteErrors(false);
               setIsFinished(false);
-              setPlacedGroups({
-                domestic: [],
-                forest: [],
-                steppe: [],
-                lake: [],
-              });
+              setPlacedGroups({ domestic: [], forest: [], steppe: [], lake: [] });
             }}
           >
             Кайра аткаруу
@@ -434,13 +410,7 @@ function BirdsExercise() {
               {currentMatching.left.map((item) => (
                 <div key={item.id} className="animals-match-row">
                   <div className="animal-bubble">{item.text}</div>
-
-                  <img
-                    src={getImageUrl(item.img)}
-                    className="animal-img"
-                    alt=""
-                  />
-
+                  <img src={getImageUrl(item.img)} className="animal-img" alt="" />
                   <div
                     className={`animal-dot
                       ${activeStart?.id === item.id ? "active" : ""}
@@ -463,23 +433,17 @@ function BirdsExercise() {
                     `}
                     onClick={(e) => handlePointClick(item.id, "right", e)}
                   ></div>
-
                   <img
                     src={getImageUrl(item.img)}
-                    className={`animal-img ${
-                      currentMatching.soundMode ? "animal-sound-img" : ""
-                    }`}
+                    className={`animal-img ${currentMatching.soundMode ? "animal-sound-img" : ""}`}
                     alt=""
                     onClick={() => {
                       if (currentMatching.soundMode) {
                         playSound(item.audio);
                       }
                     }}
-                    style={{
-                      cursor: currentMatching.soundMode ? "pointer" : "default",
-                    }}
+                    style={{ cursor: currentMatching.soundMode ? "pointer" : "default" }}
                   />
-
                   <div className="animal-bubble">{item.text}</div>
                 </div>
               ))}
@@ -490,11 +454,7 @@ function BirdsExercise() {
 
       {currentWriteGame && (
         <div className="animals-write-area">
-          <img
-            src={getImageUrl(currentWriteGame.img)}
-            className="animal-task-img"
-            alt=""
-          />
+          <img src={getImageUrl(currentWriteGame.img)} className="animal-task-img" alt="" />
 
           <div className="animal-slots-row">
             {correctWord.map((_, i) => (
@@ -512,11 +472,7 @@ function BirdsExercise() {
 
           <div className="animal-letters-pool">
             {letters.map((letter, i) => {
-              const letterData = {
-                id: `${currentStep}-${i}`,
-                letter,
-              };
-
+              const letterData = { id: `${currentStep}-${i}`, letter };
               if (usedLetterIds.includes(letterData.id)) return null;
 
               return (
@@ -545,24 +501,20 @@ function BirdsExercise() {
             {zones.map((zone) => (
               <div
                 key={zone.key}
-                className={`group-zone ${groupError ? "group-error" : ""}`}
+                ref={zoneRefs[zone.key]}
+                className={`group-zone ${groupError ? "group-error" : ""} ${selectedMobileBird ? "waiting-for-click" : ""}`}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleGroupDrop(e, zone.key)}
+                onClick={() => handleMobileZoneClick(zone.key)}
               >
                 <div className="zone-header">
                   <h3>{zone.title}</h3>
-
-                  <img
-                    src={getImageUrl(zone.img)}
-                    className="zone-img"
-                    alt=""
-                  />
+                  <img src={getImageUrl(zone.img)} className="zone-img" alt="" />
                 </div>
 
                 <div className="group-placed">
                   {placedGroups[zone.key].map((id) => {
                     const bird = groupBirds.find((b) => b.id === id);
-
                     return (
                       <img
                         key={id}
@@ -570,7 +522,10 @@ function BirdsExercise() {
                         className="group-placed-img"
                         alt=""
                         title="Кайтаруу"
-                        onClick={() => removeBirdFromGroup(id, zone.key)}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Защита от клика по самой зоне
+                          removeBirdFromGroup(id, zone.key);
+                        }}
                       />
                     );
                   })}
@@ -585,16 +540,13 @@ function BirdsExercise() {
               .map((bird) => (
                 <div
                   key={bird.id}
-                  className="group-animal-card"
+                  className={`group-animal-card ${selectedMobileBird?.id === bird.id ? "mobile-selected" : ""}`}
                   draggable
                   onDragStart={(e) => handleBirdGroupDrag(e, bird.id)}
+                  onTouchEnd={(e) => handleBirdTouchEnd(e, bird.id)}
+                  onClick={() => handleMobileSelect(bird)}
                 >
-                  <img
-                    src={getImageUrl(bird.img)}
-                    className="group-animal-img"
-                    alt=""
-                  />
-
+                  <img src={getImageUrl(bird.img)} className="group-animal-img" alt="" />
                   <p>{bird.name}</p>
                 </div>
               ))}
@@ -604,9 +556,8 @@ function BirdsExercise() {
 
       <div className="animals-nav">
         <button disabled={currentStep === 0} onClick={handleBackClick}>
-          Артка
+          Aртка
         </button>
-
         <button onClick={handleNextClick}>Кийинки</button>
       </div>
     </>
