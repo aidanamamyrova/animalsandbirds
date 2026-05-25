@@ -424,38 +424,42 @@
  .animals-matching-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 4px !important;
+  gap: 2px !important;
   align-items: start !important;
 }
 
 .animals-column {
   width: 100% !important;
-  gap: 9px !important;
+  gap: 6px !important;
 }
 
 .animals-match-row {
   width: 100% !important;
   justify-content: center !important;
-  gap: 4px !important;
+  gap: 2px !important;
 }
 
 .animal-img {
-  width: 44px !important;
-  height: 44px !important;
+  width: 34px !important;
+  height: 34px !important;
+  object-fit: contain !important;
 }
 
 .animal-bubble {
-  min-width: 58px !important;
-  max-width: 78px !important;
-  font-size: 9px !important;
-  padding: 5px 5px !important;
+  min-width: 44px !important;
+  max-width: 58px !important;
+  font-size: 7.5px !important;
+  padding: 3px 4px !important;
+  border-radius: 12px !important;
+  line-height: 1 !important;
   white-space: normal !important;
-  line-height: 1.1 !important;
+  word-break: break-word !important;
 }
 
 .animal-dot {
-  width: 13px !important;
-  height: 13px !important;
+  width: 10px !important;
+  height: 10px !important;
+  flex-shrink: 0 !important;
 }
 
 .animals-nav {
