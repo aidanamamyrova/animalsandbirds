@@ -386,75 +386,49 @@
   animation: wrongShake 0.5s ease !important;
 }
 
-/* ===== ИСПРАВЛЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
-
-/* ===== СИНХРОНИЗАЦИЯ ИГРЫ С ЛЕВЫМ САЙДБАРОМ ===== */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ КОНТЕНТА ИГРЫ ===== */
 @media (max-width: 768px) {
-  
+  .animals-content {
+    margin-left: 30% !important; /* Поле уступает 30% левому меню */
+    width: 70% !important;        /* И занимает свои честные 70% */
+    padding-top: 75px !important; /* Опускаем игру чуть ниже навбара */
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
   .animals-page {
     padding: 10px 2px !important;
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* ВАЖНО: Сдвигаем контент игры вправо ровно на 30% ширины сайдбара */
-  .animals-content {
-    margin-left: 30% !important; /* Уступает место сайдбару */
-    width: 70% !important;        /* Занимает оставшиеся 70% экрана */
-    padding-top: 85px !important; /* Отступ сверху под навибар */
-    padding-left: 4px !important;
-    padding-right: 4px !important;
-    box-sizing: border-box;
-    overflow-x: hidden; /* Защита от горизонтальной прокрутки */
-  }
-
-  /* Уменьшаем тексты хедера игры */
   .animals-title {
     font-size: 15px !important;
-    margin-bottom: 4px;
   }
 
   .animals-progress {
     width: 95%;
     height: 6px;
-    margin-bottom: 8px;
   }
 
   .animals-header {
     font-size: 12px !important;
     padding: 4px 10px !important;
-    max-width: 98%;
-    border-radius: 15px;
   }
 
-  .animals-matching-area {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 5px;
-    overflow: visible; /* Линии SVG должны быть видны! */
-  }
-
-  /* ГЛАВНОЕ ИСПРАВЛЕНИЕ СЕТКИ: Две колонки строго параллельно */
+  /* --- ИГРА 1: Соединялка (Родители и Малыши) --- */
   .animals-matching-grid {
     display: flex !important;
-    flex-direction: row !important; /* Никаких column! Только в один горизонтальный ряд */
+    flex-direction: row !important; /* Колонки остаются стоять строго рядом */
     justify-content: space-between !important;
-    gap: 2px !important; /* Микро-зазор для прорисовки линий */
-    width: 100% !important;
+    gap: 2px !important;
   }
 
   .animals-column {
-    width: 49% !important; /* Каждая колонка занимает половину от доступных 70% */
-    gap: 12px !important;  /* Расстояние между строками */
-  }
-
-  /* Прижимаем элементы к центру (ближе к точкам сопряжения) */
-  .animals-column:first-child .animals-match-row {
-    justify-content: flex-end !important; /* Левая колонка жмется вправо */
-  }
-
-  .animals-column:last-child .animals-match-row {
-    justify-content: flex-start !important; /* Правая колонка жмется влево */
+    width: 49% !important;
+    gap: 12px !important;
   }
 
   .animals-match-row {
@@ -464,86 +438,107 @@
     align-items: center !important;
   }
 
-  /* Сжимаем картинки животных под узкий экран */
   .animal-img {
     width: 38px !important;
     height: 38px !important;
     min-width: 38px;
   }
 
-  /* Текстовые плашечки названий делаем супер-миниатюрными */
   .animal-bubble {
     font-size: 9px !important;
     padding: 2px 4px !important;
-    border-radius: 6px !important;
     max-width: 42px !important;
-    line-height: 1.1;
     text-align: center;
-    word-break: break-all; /* Если длинное киргизское слово не влезает, оно аккуратно перенесется */
+    word-break: break-all;
   }
 
-  /* Круглые точки для кликов */
   .animal-dot {
     width: 12px !important;
     height: 12px !important;
-    flex-shrink: 0 !important; /* Защита от деформации точки */
   }
 
-  /* Нижние кнопки навигации "Назад" и "Дальше" */
-  .animals-nav {
-    gap: 8px;
-    margin-top: 15px;
+  /* --- ИГРА 2: Распределение по зонам (Бөлүштүр) --- */
+  .group-game-area {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .animals-nav button {
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 15px;
-  }
-
-  /* Адаптация для игры в буквы "Туура жаз" */
-  .animal-task-img {
-    width: 90px !important;
-    height: 90px !important;
-  }
-
-  .animal-slots-row,
-  .animal-letters-pool {
-    gap: 4px;
-    margin: 8px 0;
-  }
-
-  .animal-drop-slot {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  .animal-letter {
-    padding: 4px 8px;
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  /* Адаптация для игры распределения по зонам "Бөлүштүр" */
-  .group-zones,
-  .four-zones {
+  /* Дома (Үй, Токой...) выстраиваются в сетку 2х2 сверху */
+  .group-zones, .four-zones {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Перестраиваем зоны в сетку 2х2 вместо длинной строки */
+    grid-template-columns: 1fr 1fr !important; 
     gap: 6px !important;
+    width: 100% !important;
+    order: 1; 
   }
 
   .group-zone {
     width: auto !important;
-    min-height: 95px !important;
+    min-height: 100px !important; /* Уменьшаем высоту зон, чтобы всё влезло */
     padding: 4px !important;
   }
-}
 
-/* Фикс-предохранитель для ультра-маленьких экранов (меньше 360px шириной) */
-@media (max-width: 360px) {
-  .animal-bubble {
-    display: none !important; /* Если экран совсем крошечный, скрываем текст, оставляем только картинки и точки, чтобы верстка физически не ломалась */
+  .zone-header h3 {
+    font-size: 13px !important;
+  }
+
+  .zone-img {
+    width: 45px !important;
+    height: 32px !important;
+  }
+
+  /* Животные, которых нужно перетаскивать, встают СНИЗУ под домами */
+  .group-animals-pool {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    order: 2; /* Карточки снизу, так удобнее тапать на телефоне */
+  }
+
+  .group-animal-card {
+    width: 64px !important;
+    min-height: 75px !important;
+    font-size: 10px !important;
+    padding: 4px !important;
+  }
+
+  .group-animal-img, .group-placed-img {
+    width: 42px !important;
+    height: 32px !important;
+  }
+
+  /* --- ИГРА 3: Финальный экран (Азаматсың!) --- */
+  .finish-screen {
+    height: 55vh !important;
+    width: 100% !important;
+  }
+
+  .finish-card {
+    width: 95% !important;
+    padding: 20px 10px !important;
+    border-radius: 20px !important;
+  }
+
+  .finish-icon {
+    font-size: 40px !important;
+  }
+
+  .finish-card h1 {
+    font-size: 22px !important; /* Теперь "Азаматсың!" не будет гигантским */
+    margin-bottom: 6px !important;
+  }
+
+  .finish-card p {
+    font-size: 15px !important;
+  }
+
+  .restart-btn {
+    padding: 8px 22px !important;
+    font-size: 14px !important;
   }
 }

@@ -38,19 +38,24 @@
 }
 
 
-/* ===== MOBILE ADAPTATION FOR NAVBAR ===== */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ НАВБАРА ===== */
 @media (max-width: 768px) {
   .animals-navbar {
-    height: 60px !important; /* Уменьшаем высоту с 70px до 60px */
-    padding: 10px 16px !important; /* Меньше отступы по бокам */
+    height: 60px !important; /* Четкая высота для стыковки с сайдбаром */
+    padding: 10px 16px !important; 
     justify-content: space-between;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001; /* Чтобы шапка была поверх сайдбара */
+    box-sizing: border-box;
   }
 
   .animals-logo {
-    font-size: 22px !important; /* Уменьшаем огромный текст логотипа */
+    font-size: 20px !important; 
   }
 
-  /* Если у вас в навбаре есть кнопки меню, тоже их уменьшаем */
   .animals-menu button {
     margin-left: 8px !important;
     padding: 8px 12px !important;

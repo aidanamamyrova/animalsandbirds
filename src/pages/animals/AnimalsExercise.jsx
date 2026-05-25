@@ -1,5 +1,11 @@
 import React, { useState, useRef } from "react";
 import "./AnimalsExercise.css";
+import { polyfill } from 'mobile-drag-drop';
+import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
+
+polyfill({
+    dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
+});
 
 import cowImg from "../../assets/animals/cow.png";
 import horseImg from "../../assets/animals/horse.png";
@@ -75,7 +81,13 @@ function AnimalsExercise() {
   const [groupError, setGroupError] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 
+  // Стейт для поддержки кликов/тачей в мобильной версии разделения по группам
+  const [selectedMobileAnimal, setSelectedMobileAnimal] = useState(null);
+
   const containerRef = useRef(null);
+  // Рефы для поиска домиков на мобильных экранах по координатам пальца
+  const domesticZoneRef = useRef(null);
+  const wildZoneRef = useRef(null);
 
   const matchGames = {
     0: {
@@ -111,7 +123,7 @@ function AnimalsExercise() {
     5: {
       title: "Кайда жашайт?",
       left: [
-        { id: "l1", text: "Түлкү", img: "fox.png" },
+        { id: "l1", text: "Түлку", img: "fox.png" },
         { id: "l2", text: "Аркар", img: "arkar.png" },
         { id: "l3", text: "Суур", img: "marmot.png" },
       ],
@@ -147,7 +159,7 @@ function AnimalsExercise() {
       clickMode: true,
     },
     7: {
-      word: ["Ч", "Ө", "Н", "Д", "Ө", "Л", "Ө", "Й"],
+      word: ["Ч", "О", "Н", "Д", "Ө", "Л", "Ө", "Й"],
       letters: ["Ө", "Ч", "Д", "Й", "Н", "Ө", "Л", "Ө"],
       img: "chondoloy.png",
       clickMode: true,
@@ -181,6 +193,7 @@ function AnimalsExercise() {
     setPlacedLetters(Array(8).fill(null));
     setUsedLetterIds([]);
     setGroupError(false);
+    setSelectedMobileAnimal(null);
   };
 
   const handleNextClick = () => {
@@ -188,7 +201,6 @@ function AnimalsExercise() {
       setIsFinished(true);
       return;
     }
-
     setCurrentStep(currentStep + 1);
     resetStepState();
   };
@@ -251,7 +263,6 @@ function AnimalsExercise() {
 
   const handleDrop = (e, index) => {
     e.preventDefault();
-
     const letterData = JSON.parse(e.dataTransfer.getData("letterData"));
     const newLetters = [...placedLetters];
 
@@ -262,7 +273,6 @@ function AnimalsExercise() {
     }
 
     newLetters[index] = letterData;
-
     setPlacedLetters(newLetters);
     setUsedLetterIds((prev) => [...prev, letterData.id]);
     setShowWriteErrors(true);
@@ -285,7 +295,6 @@ function AnimalsExercise() {
 
   const handleSlotClick = (index) => {
     const selectedLetter = placedLetters[index];
-
     if (!selectedLetter) return;
 
     const newLetters = [...placedLetters];
@@ -307,16 +316,49 @@ function AnimalsExercise() {
       : "animal-drop-slot wrong";
   };
 
+  // --- ЛОГИКА ДЛЯ ДЕСКТОПНОГО DRAG & DROP (ШАГ 8) ---
   const handleAnimalGroupDrag = (e, animalId) => {
     e.dataTransfer.setData("animalId", animalId);
   };
 
   const handleGroupDrop = (e, groupName) => {
     e.preventDefault();
-
     const animalId = e.dataTransfer.getData("animalId");
-    const animal = groupAnimals.find((item) => item.id === animalId);
+    processGroupPlacement(animalId, groupName);
+  };
 
+  // --- УНИВЕРСАЛЬНАЯ ПОДДЕРЖКА МОБИЛЬНЫХ ТАЧЕЙ (ПЕРЕТАСКИВАНИЕ / КЛИКИ) ---
+  const handleAnimalTouchStart = (animalId) => {
+    setSelectedMobileAnimal(animalId);
+  };
+
+  const handleAnimalTouchEnd = (e, animalId) => {
+    if (!selectedMobileAnimal) return;
+
+    // Считываем координаты, где палец оторвался от экрана смартфона
+    const touch = e.changedTouches[0];
+    const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    // Проверяем, попал ли палец на зону "Үй" или "Токой"
+    if (domesticZoneRef.current && domesticZoneRef.current.contains(targetEl)) {
+      processGroupPlacement(animalId, "domestic");
+    } else if (wildZoneRef.current && wildZoneRef.current.contains(targetEl)) {
+      processGroupPlacement(animalId, "wild");
+    }
+    
+    setSelectedMobileAnimal(null);
+  };
+
+  const handleZoneMobileClick = (groupName) => {
+    if (selectedMobileAnimal) {
+      processGroupPlacement(selectedMobileAnimal, groupName);
+      setSelectedMobileAnimal(null);
+    }
+  };
+
+  // Базовая функция распределения
+  const processGroupPlacement = (animalId, groupName) => {
+    const animal = groupAnimals.find((item) => item.id === animalId);
     if (!animal) return;
 
     if (animal.group === groupName) {
@@ -351,13 +393,11 @@ function AnimalsExercise() {
       <div className="finish-screen">
         <div className="finish-card">
           <div className="finish-icon">🏆</div>
-
           <h1>Азаматсың!</h1>
-
           <p>Көнүгүүнүн аягы</p>
-
           <div className="finish-buttons">
             <button
+              className="restart-btn"
               onClick={() => {
                 setCurrentStep(0);
                 setIsFinished(false);
@@ -519,20 +559,20 @@ function AnimalsExercise() {
         <div className="group-game-area">
           <div className="group-zones">
             <div
+              ref={domesticZoneRef}
               className={`group-zone ${groupError ? "group-error" : ""}`}
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => handleGroupDrop(e, "domestic")}
+              onClick={() => handleZoneMobileClick("domestic")}
             >
               <div className="zone-header">
-                <h3>Yй</h3>
-
+                <h3>Үй</h3>
                 <img src={imageMap["home.png"]} className="zone-img" alt="" />
               </div>
 
               <div className="group-placed">
                 {placedGroups.domestic.map((id) => {
                   const animal = groupAnimals.find((a) => a.id === id);
-
                   return (
                     <img
                       key={id}
@@ -540,7 +580,10 @@ function AnimalsExercise() {
                       className="group-placed-img"
                       alt=""
                       title="Кайтаруу"
-                      onClick={() => removeAnimalFromGroup(id, "domestic")}
+                      onClick={(e) => {
+                        e.stopPropagation(); // Защита от срабатывания клика по зоне
+                        removeAnimalFromGroup(id, "domestic");
+                      }}
                     />
                   );
                 })}
@@ -548,24 +591,20 @@ function AnimalsExercise() {
             </div>
 
             <div
+              ref={wildZoneRef}
               className={`group-zone ${groupError ? "group-error" : ""}`}
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => handleGroupDrop(e, "wild")}
+              onClick={() => handleZoneMobileClick("wild")}
             >
               <div className="zone-header">
                 <h3>Токой</h3>
-
-                <img
-                  src={imageMap["forest.png"]}
-                  className="zone-img"
-                  alt=""
-                />
+                <img src={imageMap["forest.png"]} className="zone-img" alt="" />
               </div>
 
               <div className="group-placed">
                 {placedGroups.wild.map((id) => {
                   const animal = groupAnimals.find((a) => a.id === id);
-
                   return (
                     <img
                       key={id}
@@ -573,7 +612,10 @@ function AnimalsExercise() {
                       className="group-placed-img"
                       alt=""
                       title="Кайтаруу"
-                      onClick={() => removeAnimalFromGroup(id, "wild")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeAnimalFromGroup(id, "wild");
+                      }}
                     />
                   );
                 })}
@@ -587,16 +629,18 @@ function AnimalsExercise() {
               .map((animal) => (
                 <div
                   key={animal.id}
-                  className="group-animal-card"
+                  className={`group-animal-card ${selectedMobileAnimal === animal.id ? "mobile-selected" : ""}`}
                   draggable
                   onDragStart={(e) => handleAnimalGroupDrag(e, animal.id)}
+                  onTouchStart={() => handleAnimalTouchStart(animal.id)}
+                  onTouchEnd={(e) => handleAnimalTouchEnd(e, animal.id)}
+                  onClick={() => handleAnimalTouchStart(animal.id)}
                 >
                   <img
                     src={imageMap[animal.img]}
                     className="group-animal-img"
                     alt=""
                   />
-
                   <p>{animal.name}</p>
                 </div>
               ))}
@@ -608,7 +652,6 @@ function AnimalsExercise() {
         <button disabled={currentStep === 0} onClick={handleBackClick}>
           Артка
         </button>
-
         <button onClick={handleNextClick}>Кийинки</button>
       </div>
     </>
