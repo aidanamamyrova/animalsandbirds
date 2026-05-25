@@ -369,20 +369,9 @@
 }
 
 @keyframes correctPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 #4caf50;
-  }
-
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 0 15px #4caf50;
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 #4caf50;
-  }
+  0% { transform: scale(1); box-shadow: 0 0 0 #4caf50; }
+  50% { transform: scale(1.08); box-shadow: 0 0 15px #4caf50; }
+  100% { transform: scale(1); box-shadow: 0 0 0 #4caf50; }
 }
 
 @keyframes wrongShake {
@@ -397,7 +386,7 @@
   animation: wrongShake 0.5s ease !important;
 }
 
-/* ===== MOBILE ADAPTATION ===== */
+/* ===== ИСПРАВЛЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
 
 @media (max-width: 768px) {
   .animals-page {
@@ -405,105 +394,125 @@
   }
 
   .animals-content {
-    margin-left: 0;
-    padding: 120px 10px 20px 10px;
-    overflow-y: auto;
+    margin-left: 0 !important; /* Убираем отступ слева, так как сайдбар скрывается или уходит наверх */
+    padding: 110px 8px 20px 8px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .animals-title {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .animals-progress {
-    width: 92%;
-    height: 10px;
+    width: 95%;
+    height: 8px;
   }
 
   .animals-header {
-    font-size: 18px;
-    padding: 8px 18px;
-    max-width: 92%;
+    font-size: 16px;
+    padding: 6px 15px;
+    max-width: 95%;
   }
 
   .animals-matching-area {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: visible; /* Разрешаем SVG линиям отображаться корректно */
+    padding: 0 5px;
+    box-sizing: border-box;
   }
 
+  /* КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Сохраняем 2 колонки (слева и справа) */
   .animals-matching-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    align-items: center;
+    display: flex !important;
+    flex-direction: row !important; /* Оставляем горизонтальное расположение */
+    justify-content: space-between;
+    gap: 10px; /* Минимальный зазор для прорисовки линий */
+    width: 100%;
   }
 
   .animals-column {
-    width: 100%;
-    gap: 14px;
-    align-items: center;
+    width: 48%; /* Каждая колонка занимает чуть меньше половины экрана */
+    gap: 12px;
+  }
+
+  /* Выравнивание элементов внутри рядов */
+  .animals-column:first-child .animals-match-row {
+    justify-content: flex-end; /* Левая колонка прижимается к центру */
+  }
+
+  .animals-column:last-child .animals-match-row {
+    justify-content: flex-start; /* Правая колонка прижимается к центру */
   }
 
   .animals-match-row {
     width: 100%;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 6px;
   }
 
+  /* Пропорционально уменьшаем картинки для мобильных устройств */
   .animal-img {
-    width: 78px;
-    height: 78px;
+    width: 55px !important;
+    height: 55px !important;
   }
 
+  /* Компактные текстовые плашки */
   .animal-bubble {
-    font-size: 13px;
-    padding: 7px 10px;
-    max-width: 120px;
-    text-align: center;
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    border-radius: 12px;
+    font-weight: bold;
+    word-break: break-word; /* Перенос длинных слов, если не влезают */
+    max-width: 75px;
   }
 
   .animal-dot {
-    width: 20px;
-    height: 20px;
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0; /* Чтобы точка не сжималась */
   }
 
+  /* Включаем отображение линий на мобильных устройствах */
   .animals-arrows-svg {
-    display: none;
+    display: block !important;
   }
 
+  /* --- Игра "Туура жаз" (Буквы) --- */
   .animal-task-img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
   }
 
   .animal-slots-row,
   .animal-letters-pool {
-    gap: 8px;
-    margin: 14px 0;
+    gap: 6px;
+    margin: 12px 0;
   }
 
   .animal-drop-slot {
-    width: 42px;
-    height: 42px;
-    font-size: 20px;
-    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    border-radius: 10px;
   }
 
   .animal-letter {
-    padding: 8px 14px;
-    font-size: 20px;
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 10px;
   }
 
   .animals-nav {
-    gap: 12px;
-    margin-top: 15px;
+    gap: 15px;
+    margin-top: 20px;
   }
 
   .animals-nav button {
-    padding: 9px 22px;
-    font-size: 15px;
+    padding: 8px 20px;
+    font-size: 14px;
   }
 
+  /* --- Игра "Бөлүштүр" (Категории) --- */
   .group-game-area {
     max-width: 100%;
   }
@@ -511,138 +520,100 @@
   .group-zones,
   .four-zones {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr; /* Сетка 2х2 вместо одной длинной строки */
+    gap: 8px;
     width: 100%;
   }
 
   .group-zone {
     width: auto;
-    min-height: 145px;
-    padding: 8px;
-    border-radius: 18px;
+    min-height: 130px;
+    padding: 6px;
+    border-radius: 15px;
   }
 
   .zone-header h3 {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .zone-img {
-    width: 65px;
-    height: 50px;
+    width: 55px;
+    height: 40px;
   }
 
   .group-placed-img {
-    width: 48px !important;
-    height: 48px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .group-animals-pool {
-    gap: 8px;
-  }
-
-  .group-animal-card {
-    width: 76px;
-    min-height: 92px;
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  .group-animal-img {
-    width: 56px !important;
-    height: 48px !important;
-  }
-
-  .finish-card {
-    width: 82%;
-    padding: 30px 20px;
-  }
-
-  .finish-icon {
-    font-size: 60px;
-  }
-
-  .finish-card h1 {
-    font-size: 30px;
-  }
-
-  .finish-card p {
-    font-size: 18px;
-  }
-
-  .restart-btn {
-    padding: 12px 30px !important;
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .animals-content {
-    padding-top: 110px;
-  }
-
-  .animals-title {
-    font-size: 20px;
-  }
-
-  .animals-header {
-    font-size: 16px;
-    padding: 7px 14px;
-  }
-
-  .animal-img {
-    width: 68px;
-    height: 68px;
-  }
-
-  .animal-bubble {
-    font-size: 12px;
-    padding: 6px 9px;
-    max-width: 105px;
-  }
-
-  .animal-dot {
-    width: 18px;
-    height: 18px;
-  }
-
-  .animal-task-img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .animal-drop-slot {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-  }
-
-  .animal-letter {
-    padding: 7px 12px;
-    font-size: 18px;
-  }
-
-  .group-zones,
-  .four-zones {
-    grid-template-columns: 1fr;
-  }
-
-  .group-zone {
-    min-height: 130px;
+    gap: 6px;
   }
 
   .group-animal-card {
     width: 72px;
-    min-height: 88px;
+    min-height: 85px;
+    font-size: 11px;
+    padding: 4px;
   }
 
   .group-animal-img {
-    width: 52px !important;
-    height: 44px !important;
+    width: 50px !important;
+    height: 40px !important;
   }
 
-  .animals-nav button {
-    padding: 8px 18px;
-    font-size: 14px;
+  /* Экран завершения */
+  .finish-card {
+    width: 90%;
+    padding: 25px 15px;
+  }
+
+  .finish-icon {
+    font-size: 50px;
+  }
+
+  .finish-card h1 {
+    font-size: 26px;
+  }
+
+  .finish-card p {
+    font-size: 16px;
+  }
+
+  .restart-btn {
+    padding: 10px 25px !important;
+    font-size: 15px;
+  }
+}
+
+/* Дополнительные точечные правки для сверхмаленьких экранов (до 480px) */
+@media (max-width: 480px) {
+  .animals-content {
+    padding-top: 100px;
+  }
+
+  .animals-matching-grid {
+    gap: 5px;
+  }
+
+  .animal-img {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .animal-bubble {
+    font-size: 9px !important;
+    padding: 3px 4px !important;
+    max-width: 55px;
+  }
+
+  .animal-dot {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  
+  .group-zones,
+  .four-zones {
+    grid-template-columns: 1fr 1fr; /* Оставляем 2х2, чтобы не растягивать экран в бесконечную прокрутку */
   }
 }
