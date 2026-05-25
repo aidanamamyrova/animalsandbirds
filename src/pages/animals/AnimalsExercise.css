@@ -386,212 +386,256 @@
   animation: wrongShake 0.5s ease !important;
 }
 
+
 @media (max-width: 768px) {
-  /* Контейнер рабочей зоны приложения сбоку от меню */
   .animals-content {
-    margin-left: 32% !important;
-    width: 68% !important;
-    padding: 60px 6px 10px 6px !important;
+    margin-left: 30% !important;
+    width: 70% !important;
+    padding: 62px 6px 8px 6px !important;
     box-sizing: border-box !important;
-    height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    overflow: hidden !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: block !important;
   }
 
   .animals-title {
-    font-size: 14px !important;
-    margin: 2px 0 !important;
+    font-size: 16px !important;
+    margin: 0 0 4px 0 !important;
   }
 
   .animals-progress {
-    height: 5px !important;
-    margin: 2px auto 4px auto !important;
+    width: 82% !important;
+    height: 6px !important;
+    margin: 2px auto 6px auto !important;
   }
 
   .animals-header {
-    font-size: 11px !important;
-    padding: 3px 10px !important;
-    margin-bottom: 4px !important;
+    font-size: 13px !important;
+    padding: 4px 14px !important;
+    margin-bottom: 8px !important;
   }
 
-  /* ===== СЕТКА ИГРЫ И ПУЛ ПТИЦ ===== */
+  .animals-matching-area {
+    max-width: 100% !important;
+    margin-top: 4px !important;
+  }
+
+  .animals-matching-grid {
+    gap: 4px !important;
+  }
+
+  .animals-column {
+    gap: 12px !important;
+  }
+
+  .animals-match-row {
+    gap: 5px !important;
+  }
+
+  .animal-bubble {
+    font-size: 13px !important;
+    padding: 7px 11px !important;
+    border-radius: 18px !important;
+    white-space: nowrap !important;
+  }
+
+  .animal-img {
+    width: 68px !important;
+    height: 68px !important;
+    object-fit: contain !important;
+  }
+
+  .animal-dot {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .animals-write-area {
+    margin-top: 6px !important;
+  }
+
+  .animal-task-img {
+    width: 145px !important;
+    height: 145px !important;
+    object-fit: contain !important;
+  }
+
+  .animal-slots-row {
+    gap: 8px !important;
+    margin: 14px 0 !important;
+  }
+
+  .animal-drop-slot {
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 21px !important;
+    border-radius: 12px !important;
+    touch-action: none !important;
+  }
+
+  .animal-letters-pool {
+    gap: 9px !important;
+    margin: 12px 0 !important;
+  }
+
+  .animal-letter {
+    padding: 9px 16px !important;
+    font-size: 22px !important;
+    border-radius: 12px !important;
+    touch-action: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
   .group-game-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-top: 6px !important;
+    display: grid !important;
+    grid-template-columns: 47% 50% !important;
+    column-gap: 6px !important;
+    align-items: start !important;
+  }
+
+  .group-zones,
+  .group-zones.four-zones {
+    width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    height: calc(100vh - 150px) !important; /* Убирает необходимость скроллить экран */
-    justify-content: space-between !important;
-  }
-
-  /* Четыре зоны обитания (2 колонки на 2 строки) */
-  .group-zones.four-zones {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 4px !important;
-    width: 100% !important;
+    gap: 7px !important;
   }
 
   .group-zone {
-    min-height: 65px !important;
-    max-height: 80px !important;
-    padding: 3px !important;
-    border-radius: 8px !important;
+    width: 100% !important;
+    min-height: 92px !important;
+    max-height: none !important;
+    padding: 5px !important;
+    border-radius: 12px !important;
     box-sizing: border-box !important;
   }
 
-  /* Анимация ожидания клика, если птица выбрана тапом */
-  .waiting-for-click {
-    border: 2px dashed #4CAF50 !important;
-    background-color: rgba(76, 175, 80, 0.05) !important;
-  }
-
   .zone-header h3 {
-    font-size: 11px !important;
+    font-size: 13px !important;
     margin: 0 !important;
   }
 
   .zone-img {
-    width: 24px !important;
-    height: 18px !important;
+    width: 30px !important;
+    height: 22px !important;
+    object-fit: contain !important;
   }
 
   .group-placed {
-    gap: 2px !important;
-    margin-top: 2px !important;
+    min-height: 40px !important;
+    gap: 4px !important;
+    margin-top: 3px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   .group-placed-img {
-    width: 18px !important;
-    height: 18px !important;
+    width: 38px !important;
+    height: 38px !important;
+    object-fit: contain !important;
+    position: static !important;
   }
 
-  /* Компактный пул для 13 карточек птиц */
   .group-animals-pool {
+    width: 100% !important;
+    max-height: 430px !important;
+    overflow-y: auto !important;
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* Помещается по 4 птицы в ряд */
-    gap: 3px !important;
-    max-height: 125px !important; 
-    overflow-y: auto !important; /* Внутренний скролл только для птиц */
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
     padding: 4px !important;
-    background: rgba(255, 255, 255, 0.6) !important;
-    border-radius: 6px !important;
+    margin-top: 0 !important;
+    box-sizing: border-box !important;
+    background: rgba(255, 255, 255, 0.65) !important;
     border: 1px solid #ddd !important;
+    border-radius: 10px !important;
   }
 
   .group-animal-card {
-    min-height: 38px !important;
-    padding: 2px !important;
-    border-radius: 4px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* Подсветка выбранной карточки на мобилке */
-  .mobile-selected {
-    background-color: #e3f2fd !important;
-    border: 1.5px solid #2196f3 !important;
+    width: auto !important;
+    min-height: 72px !important;
+    padding: 4px !important;
+    border-radius: 9px !important;
+    box-sizing: border-box !important;
   }
 
   .group-animal-img {
-    width: 22px !important;
-    height: 18px !important;
+    width: 46px !important;
+    height: 38px !important;
+    object-fit: contain !important;
   }
 
   .group-animal-card p {
-    font-size: 8px !important;
-    margin: 1px 0 0 0 !important;
-    line-height: 1 !important;
+    font-size: 10px !important;
+    line-height: 1.05 !important;
+    margin: 2px 0 0 0 !important;
   }
 
-  /* НИЖНЯЯ НАВИГАЦИЯ (Всегда видна на экране) */
+  .waiting-for-click {
+    border: 2px dashed #4caf50 !important;
+    background-color: rgba(76, 175, 80, 0.06) !important;
+  }
+
+  .mobile-selected {
+    background-color: #e3f2fd !important;
+    border: 2px solid #2196f3 !important;
+  }
+
   .animals-nav {
-    margin-top: auto !important;
-    padding: 4px 0 !important;
+    margin-top: 12px !important;
+    padding: 4px 0 8px 0 !important;
     display: flex !important;
-    justify-content: space-between !important;
-    background: transparent !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    clear: both !important;
   }
 
   .animals-nav button {
-    padding: 4px 12px !important;
-    font-size: 11px !important;
-    height: 30px !important;
+    padding: 6px 18px !important;
+    font-size: 12px !important;
+    height: 32px !important;
   }
 
-  /* ===== ЭКРАН "АЗАМАТСЫҢ!" ПОДРАВНЕННЫЙ ПОД ЭКРАН С САЙДБАРОМ ===== */
   .finish-screen {
     position: fixed !important;
-    top: 55px !important;
-    left: 32% !important; /* Сдвигаем вправо, чтобы не перекрывать левое меню */
-    width: 68% !important;
-    height: calc(100vh - 55px) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: #f8fafc !important;
+    top: 60px !important;
+    left: 30% !important;
+    width: 70% !important;
+    height: calc(100vh - 60px) !important;
     padding: 10px !important;
     box-sizing: border-box !important;
   }
 
   .finish-card {
-    width: 95% !important;
-    max-width: 230px !important; /* Уменьшаем карточку */
-    padding: 12px 8px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+    width: 92% !important;
+    max-width: 240px !important;
+    padding: 14px 8px !important;
+    border-radius: 14px !important;
   }
 
   .finish-icon {
-    font-size: 24px !important;
-    margin-bottom: 2px !important;
+    font-size: 28px !important;
   }
 
   .finish-card h1 {
-    font-size: 16px !important;
-    margin: 2px 0 !important;
+    font-size: 18px !important;
   }
 
   .finish-card p {
-    font-size: 11px !important;
-    margin-bottom: 8px !important;
+    font-size: 12px !important;
   }
 
   .restart-btn {
-    padding: 5px 12px !important;
-    font-size: 11px !important;
-    border-radius: 6px !important;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
   }
-  .animal-letter {
-  padding: 12px 25px;
-  background: #fff3b8;
-  border: 2px solid #d4b97d;
-  border-radius: 15px;
-  font-size: 26px;
-  font-weight: bold;
-  cursor: grab;
-
-  /* ДЛЯ МОБИЛЬНОГО TOUCH */
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.animal-drop-slot {
-  width: 60px;
-  height: 60px;
-  border: 2px solid #0e3c92;
-  background: #fffdf5;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26px;
-  font-weight: bold;
-
-  /* ДЛЯ TOUCH DROP */
-  touch-action: none;
-}
 }
