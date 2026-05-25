@@ -1,6 +1,18 @@
 import React, { useRef, useState } from "react";
 import "./AnimalsExercise.css";
 
+// Функция для динамического получения корректного пути к картинке на хостинге
+const getImageUrl = (imgName) => {
+  if (!imgName) return "";
+  return new URL(`../../assets/animals/${imgName}`, import.meta.url).href;
+};
+
+// Функция для динамического получения корректного пути к аудио на хостинге
+const getAudioUrl = (audioName) => {
+  if (!audioName) return "";
+  return new URL(`../../assets/animals/sounds/${audioName}`, import.meta.url).href;
+};
+
 function BirdsExercise() {
   const [currentStep, setCurrentStep] = useState(0);
   const [connections, setConnections] = useState([]);
@@ -34,9 +46,10 @@ function BirdsExercise() {
       audioRef.current.currentTime = 0;
     }
 
-    const audio = new Audio(`/src/assets/animals/sounds/${audioFile}`);
+    // Использование корректного URL для хостинга
+    const audio = new Audio(getAudioUrl(audioFile));
     audioRef.current = audio;
-    audio.play();
+    audio.play().catch(err => console.log("Аудио катасы:", err));
   };
 
   const matchingGames = {
@@ -332,14 +345,14 @@ function BirdsExercise() {
     }));
   };
 
-const handleNextClick = () => {
-  if (currentStep < totalSteps - 1) {
-    setCurrentStep(currentStep + 1);
-    resetStepState();
-  } else {
-    setIsFinished(true);
-  }
-};
+  const handleNextClick = () => {
+    if (currentStep < totalSteps - 1) {
+      setCurrentStep(currentStep + 1);
+      resetStepState();
+    } else {
+      setIsFinished(true);
+    }
+  };
 
   const handleBackClick = () => {
     if (currentStep > 0) {
@@ -349,33 +362,39 @@ const handleNextClick = () => {
   };
 
   if (isFinished) {
-  return (
-    <div className="finish-screen">
-      <div className="finish-card">
-        <div className="finish-icon">🏆</div>
+    return (
+      <div className="finish-screen">
+        <div className="finish-card">
+          <div className="finish-icon">🏆</div>
 
-        <h1>Азаматсың!</h1>
+          <h1>Азаматсың!</h1>
 
-        <p>Көнүгүүнүн аягы</p>
+          <p>Көнүгүүнүн аягы</p>
 
-        <button
-          className="restart-btn"
-          onClick={() => {
-            setCurrentStep(0);
-            setConnections([]);
-            setCorrectDots([]);
-            setWrongDots([]);
-            setPlacedLetters(Array(8).fill(null));
-            setShowWriteErrors(false);
-            setIsFinished(false);
-          }}
-        >
-          Кайра аткаруу
-        </button>
+          <button
+            className="restart-btn"
+            onClick={() => {
+              setCurrentStep(0);
+              setConnections([]);
+              setCorrectDots([]);
+              setWrongDots([]);
+              setPlacedLetters(Array(8).fill(null));
+              setShowWriteErrors(false);
+              setIsFinished(false);
+              setPlacedGroups({
+                domestic: [],
+                forest: [],
+                steppe: [],
+                lake: [],
+              });
+            }}
+          >
+            Кайра аткаруу
+          </button>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   return (
     <>
@@ -417,7 +436,7 @@ const handleNextClick = () => {
                   <div className="animal-bubble">{item.text}</div>
 
                   <img
-                    src={`/src/assets/animals/${item.img}`}
+                    src={getImageUrl(item.img)}
                     className="animal-img"
                     alt=""
                   />
@@ -446,7 +465,7 @@ const handleNextClick = () => {
                   ></div>
 
                   <img
-                    src={`/src/assets/animals/${item.img}`}
+                    src={getImageUrl(item.img)}
                     className={`animal-img ${
                       currentMatching.soundMode ? "animal-sound-img" : ""
                     }`}
@@ -472,7 +491,7 @@ const handleNextClick = () => {
       {currentWriteGame && (
         <div className="animals-write-area">
           <img
-            src={`/src/assets/animals/${currentWriteGame.img}`}
+            src={getImageUrl(currentWriteGame.img)}
             className="animal-task-img"
             alt=""
           />
@@ -534,7 +553,7 @@ const handleNextClick = () => {
                   <h3>{zone.title}</h3>
 
                   <img
-                    src={`/src/assets/animals/${zone.img}`}
+                    src={getImageUrl(zone.img)}
                     className="zone-img"
                     alt=""
                   />
@@ -547,7 +566,7 @@ const handleNextClick = () => {
                     return (
                       <img
                         key={id}
-                        src={`/src/assets/animals/${bird.img}`}
+                        src={getImageUrl(bird.img)}
                         className="group-placed-img"
                         alt=""
                         title="Кайтаруу"
@@ -571,7 +590,7 @@ const handleNextClick = () => {
                   onDragStart={(e) => handleBirdGroupDrag(e, bird.id)}
                 >
                   <img
-                    src={`/src/assets/animals/${bird.img}`}
+                    src={getImageUrl(bird.img)}
                     className="group-animal-img"
                     alt=""
                   />

@@ -33,7 +33,7 @@ import BirdsExercise from "./pages/animals/BirdsExercise";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+     <Route path="/" element={<Home />} />
       <Route path="/mektep" element={<Mektep />} />
       <Route path="/mektep-exercise" element={<MektepExercise />} />
       <Route path="/klass" element={<Klass />} />
@@ -58,11 +58,10 @@ function App() {
             <Route path="/san_exercise" element={<SandarExercise/>}/>
             <Route path="/dene" element={<Dene/>}/>
             <Route path="/dene_exercise" element={<DeneExercise/>}/>
-    <Route path="/animals-aidana" element={<AnimalsLayout />}>
+  <Route path="/" element={<AnimalsLayout />}>
   <Route index element={<AnimalsExercise />} />
   <Route path="birds" element={<BirdsExercise />} />
 </Route>
-
 
 
 

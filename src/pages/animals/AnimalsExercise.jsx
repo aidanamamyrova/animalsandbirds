@@ -1,6 +1,66 @@
 import React, { useState, useRef } from "react";
 import "./AnimalsExercise.css";
 
+import cowImg from "../../assets/animals/cow.png";
+import horseImg from "../../assets/animals/horse.png";
+import goatImg from "../../assets/animals/goat.png";
+import ulakImg from "../../assets/animals/ulak.png";
+import muzoImg from "../../assets/animals/muzo.png";
+import kulunImg from "../../assets/animals/kulun.png";
+
+import wolfImg from "../../assets/animals/wolf.png";
+import rabbitImg from "../../assets/animals/rabbit.png";
+import bearImg from "../../assets/animals/bear.png";
+import bearbabyImg from "../../assets/animals/bearbaby.png";
+import wolfbabyImg from "../../assets/animals/wolfbaby.png";
+import rabbitbabyImg from "../../assets/animals/rabbitbaby.png";
+
+import foxImg from "../../assets/animals/fox.png";
+import arkarImg from "../../assets/animals/arkar.png";
+import marmotImg from "../../assets/animals/marmot.png";
+import mountainImg from "../../assets/animals/mountain.png";
+import burrowImg from "../../assets/animals/burrow.png";
+import forestImg from "../../assets/animals/forest.png";
+
+import koiImg from "../../assets/animals/koi.png";
+import pigImg from "../../assets/animals/pig.png";
+import babydogImg from "../../assets/animals/babydog.png";
+import mondoloyImg from "../../assets/animals/mondoloy.png";
+import chondoloyImg from "../../assets/animals/chondoloy.png";
+
+import homeImg from "../../assets/animals/home.png";
+
+const imageMap = {
+  "cow.png": cowImg,
+  "horse.png": horseImg,
+  "goat.png": goatImg,
+  "ulak.png": ulakImg,
+  "muzo.png": muzoImg,
+  "kulun.png": kulunImg,
+
+  "wolf.png": wolfImg,
+  "rabbit.png": rabbitImg,
+  "bear.png": bearImg,
+  "bearbaby.png": bearbabyImg,
+  "wolfbaby.png": wolfbabyImg,
+  "rabbitbaby.png": rabbitbabyImg,
+
+  "fox.png": foxImg,
+  "arkar.png": arkarImg,
+  "marmot.png": marmotImg,
+  "mountain.png": mountainImg,
+  "burrow.png": burrowImg,
+  "forest.png": forestImg,
+
+  "koi.png": koiImg,
+  "pig.png": pigImg,
+  "babydog.png": babydogImg,
+  "mondoloy.png": mondoloyImg,
+  "chondoloy.png": chondoloyImg,
+
+  "home.png": homeImg,
+};
+
 function AnimalsExercise() {
   const [currentStep, setCurrentStep] = useState(0);
   const [connections, setConnections] = useState([]);
@@ -193,7 +253,6 @@ function AnimalsExercise() {
     e.preventDefault();
 
     const letterData = JSON.parse(e.dataTransfer.getData("letterData"));
-
     const newLetters = [...placedLetters];
 
     if (newLetters[index]) {
@@ -233,9 +292,7 @@ function AnimalsExercise() {
     newLetters[index] = null;
 
     setPlacedLetters(newLetters);
-    setUsedLetterIds((prev) =>
-      prev.filter((id) => id !== selectedLetter.id)
-    );
+    setUsedLetterIds((prev) => prev.filter((id) => id !== selectedLetter.id));
   };
 
   const getLetterClass = (letterData, index) => {
@@ -355,7 +412,7 @@ function AnimalsExercise() {
                   <div className="animal-bubble">{item.text}</div>
 
                   <img
-                    src={`/src/assets/animals/${item.img}`}
+                    src={imageMap[item.img]}
                     className="animal-img"
                     alt=""
                   />
@@ -365,7 +422,11 @@ function AnimalsExercise() {
                       ${activeStart?.id === item.id ? "active" : ""}
                       ${wrongDots.includes(item.id) ? "wrong-dot" : ""}
                       ${correctDots.includes(item.id) ? "correct-dot" : ""}
-                      ${showMatchErrors && !isMatched(item.id) ? "wrong-dot" : ""}
+                      ${
+                        showMatchErrors && !isMatched(item.id)
+                          ? "wrong-dot"
+                          : ""
+                      }
                     `}
                     onClick={(e) => handlePointClick(item.id, "left", e)}
                   ></div>
@@ -380,13 +441,17 @@ function AnimalsExercise() {
                     className={`animal-dot
                       ${wrongDots.includes(item.id) ? "wrong-dot" : ""}
                       ${correctDots.includes(item.id) ? "correct-dot" : ""}
-                      ${showMatchErrors && !isMatched(item.id) ? "wrong-dot" : ""}
+                      ${
+                        showMatchErrors && !isMatched(item.id)
+                          ? "wrong-dot"
+                          : ""
+                      }
                     `}
                     onClick={(e) => handlePointClick(item.id, "right", e)}
                   ></div>
 
                   <img
-                    src={`/src/assets/animals/${item.img}`}
+                    src={imageMap[item.img]}
                     className="animal-img"
                     alt=""
                   />
@@ -402,7 +467,7 @@ function AnimalsExercise() {
       {currentWriteGame && (
         <div className="animals-write-area">
           <img
-            src={`/src/assets/animals/${currentWriteGame.img}`}
+            src={imageMap[currentWriteGame.img]}
             className="animal-task-img"
             alt=""
           />
@@ -461,11 +526,7 @@ function AnimalsExercise() {
               <div className="zone-header">
                 <h3>Yй</h3>
 
-                <img
-                  src="/src/assets/animals/home.png"
-                  className="zone-img"
-                  alt=""
-                />
+                <img src={imageMap["home.png"]} className="zone-img" alt="" />
               </div>
 
               <div className="group-placed">
@@ -475,7 +536,7 @@ function AnimalsExercise() {
                   return (
                     <img
                       key={id}
-                      src={`/src/assets/animals/${animal.img}`}
+                      src={imageMap[animal.img]}
                       className="group-placed-img"
                       alt=""
                       title="Кайтаруу"
@@ -495,7 +556,7 @@ function AnimalsExercise() {
                 <h3>Токой</h3>
 
                 <img
-                  src="/src/assets/animals/forest.png"
+                  src={imageMap["forest.png"]}
                   className="zone-img"
                   alt=""
                 />
@@ -508,7 +569,7 @@ function AnimalsExercise() {
                   return (
                     <img
                       key={id}
-                      src={`/src/assets/animals/${animal.img}`}
+                      src={imageMap[animal.img]}
                       className="group-placed-img"
                       alt=""
                       title="Кайтаруу"
@@ -531,7 +592,7 @@ function AnimalsExercise() {
                   onDragStart={(e) => handleAnimalGroupDrag(e, animal.id)}
                 >
                   <img
-                    src={`/src/assets/animals/${animal.img}`}
+                    src={imageMap[animal.img]}
                     className="group-animal-img"
                     alt=""
                   />

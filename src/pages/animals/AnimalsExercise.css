@@ -39,7 +39,6 @@
   font-weight: bold;
   margin: 0 0 12px 0;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(120, 100, 60, 0.08);
 }
 
 .animals-matching-area {
@@ -108,7 +107,6 @@
   background: #95e798 !important;
   transform: scale(1.2);
   box-shadow: 0 0 15px #4caf50;
-  transition: 0.3s;
 }
 
 .wrong-dot {
@@ -136,6 +134,7 @@
   justify-content: center;
   gap: 15px;
   margin: 25px 0;
+  flex-wrap: wrap;
 }
 
 .animal-drop-slot {
@@ -192,12 +191,6 @@
   font-weight: bold;
   color: #2f4720;
   cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 0 4px 10px rgba(90, 120, 60, 0.12);
-}
-
-.animals-nav button:hover {
-  background: #7c9edc;
 }
 
 .animals-nav button:disabled {
@@ -206,7 +199,7 @@
 }
 
 .animals-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -224,36 +217,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
-}
-
-@keyframes correctPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 #4caf50;
-  }
-
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 0 15px #4caf50;
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 #4caf50;
-  }
-}
-
-@keyframes wrongShake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-.shake-error {
-  animation: wrongShake 0.5s ease !important;
+  overflow-y: auto;
 }
 
 .zone-header {
@@ -283,19 +247,13 @@
   margin-top: 5px;
 }
 
-.group-zones {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-}
-
+.group-zones,
 .four-zones {
   display: flex;
   justify-content: center;
   gap: 12px;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  width: 100%;
 }
 
 .group-zone {
@@ -306,7 +264,6 @@
   background: #fff9e8;
   padding: 12px;
   text-align: center;
-  transition: 0.3s;
 }
 
 .group-placed {
@@ -354,8 +311,6 @@
   width: 76px !important;
   height: 62px !important;
   object-fit: contain !important;
-  max-width: 76px !important;
-  max-height: 62px !important;
 }
 
 .group-animal-card p {
@@ -382,7 +337,6 @@
   border-radius: 30px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   border: 2px solid #d8c796;
 }
 
@@ -403,22 +357,6 @@
   margin-bottom: 35px;
 }
 
-.sound-btn {
-  width: 90px;
-  height: 90px;
-  border-radius: 20px;
-  border: 2px solid #c9b27a;
-  background: #f4ead1;
-  font-size: 42px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.sound-btn:hover {
-  transform: scale(1.08);
-  background: #eadcb8;
-}
-
 .restart-btn {
   padding: 16px 45px !important;
   border: none;
@@ -428,166 +366,283 @@
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-.restart-btn:hover {
-  background: #d2d2d2;
-  transform: scale(1.03);
+@keyframes correctPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 #4caf50;
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px #4caf50;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 #4caf50;
+  }
 }
 
-.restart-btn:active {
-  transform: scale(0.98);
+@keyframes wrongShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
+
+.shake-error {
+  animation: wrongShake 0.5s ease !important;
+}
+
+/* ===== MOBILE ADAPTATION ===== */
 
 @media (max-width: 768px) {
-  .animals-navbar {
-    height: 58px;
-    padding: 10px 14px;
-  }
-
-  .animals-logo {
-    font-size: 23px;
-  }
-
-  .animals-sidebar {
-    position: fixed;
-    top: 58px;
-    left: 0;
-    width: 100%;
-    height: auto;
-    padding: 8px;
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    border-right: none;
-    border-bottom: 2px solid #cfa24d;
-    z-index: 999;
-  }
-
-  .animals-topic-wrapper {
-    margin-bottom: 0;
-    flex: 0 0 auto;
-  }
-
-  .animals-topic {
-    min-width: 130px;
-    padding: 10px 12px;
-    border-radius: 16px;
-  }
-
-  .animals-topic-title {
-    font-size: 14px;
+  .animals-page {
+    padding: 10px;
   }
 
   .animals-content {
     margin-left: 0;
-    padding-top: 125px;
+    padding: 120px 10px 20px 10px;
     overflow-y: auto;
-    background: #fffef7;
   }
 
   .animals-title {
-    font-size: 21px;
+    font-size: 22px;
   }
 
   .animals-progress {
-    width: 90%;
+    width: 92%;
+    height: 10px;
   }
 
   .animals-header {
     font-size: 18px;
-    padding: 8px 24px;
+    padding: 8px 18px;
+    max-width: 92%;
+  }
+
+  .animals-matching-area {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .animals-matching-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .animals-column {
+    width: 100%;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .animals-match-row {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .animal-img {
-    width: 82px;
-    height: 82px;
+    width: 78px;
+    height: 78px;
   }
 
   .animal-bubble {
     font-size: 13px;
-    padding: 7px 11px;
+    padding: 7px 10px;
+    max-width: 120px;
+    text-align: center;
   }
 
   .animal-dot {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
-  .animals-matching-grid {
-    gap: 12px;
-  }
-
-  .animals-column {
-    gap: 24px;
-  }
-
-  .animals-match-row {
-    gap: 7px;
+  .animals-arrows-svg {
+    display: none;
   }
 
   .animal-task-img {
-    width: 145px;
-    height: 145px;
-  }
-
-  .animal-drop-slot {
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
+    width: 140px;
+    height: 140px;
   }
 
   .animal-slots-row,
   .animal-letters-pool {
     gap: 8px;
-    margin: 16px 0;
-    flex-wrap: wrap;
+    margin: 14px 0;
+  }
+
+  .animal-drop-slot {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    border-radius: 12px;
   }
 
   .animal-letter {
-    padding: 8px 15px;
-    font-size: 21px;
+    padding: 8px 14px;
+    font-size: 20px;
   }
 
   .animals-nav {
-    gap: 18px;
+    gap: 12px;
+    margin-top: 15px;
   }
 
   .animals-nav button {
-    padding: 9px 24px;
-    font-size: 16px;
+    padding: 9px 22px;
+    font-size: 15px;
   }
 
-  .sound-btn {
-    width: 68px;
-    height: 68px;
-    font-size: 30px;
+  .group-game-area {
+    max-width: 100%;
   }
 
+  .group-zones,
   .four-zones {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
   }
 
   .group-zone {
-    width: 42%;
-    min-height: 155px;
+    width: auto;
+    min-height: 145px;
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .zone-header h3 {
+    font-size: 17px;
+  }
+
+  .zone-img {
+    width: 65px;
+    height: 50px;
+  }
+
+  .group-placed-img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .group-animals-pool {
+    gap: 8px;
   }
 
   .group-animal-card {
     width: 76px;
-    min-height: 94px;
-    font-size: 13px;
+    min-height: 92px;
+    font-size: 12px;
+    padding: 6px;
   }
 
   .group-animal-img {
-    width: 58px !important;
+    width: 56px !important;
     height: 48px !important;
   }
 
   .finish-card {
     width: 82%;
-    padding: 34px 24px;
+    padding: 30px 20px;
+  }
+
+  .finish-icon {
+    font-size: 60px;
+  }
+
+  .finish-card h1 {
+    font-size: 30px;
+  }
+
+  .finish-card p {
+    font-size: 18px;
+  }
+
+  .restart-btn {
+    padding: 12px 30px !important;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .animals-content {
+    padding-top: 110px;
+  }
+
+  .animals-title {
+    font-size: 20px;
+  }
+
+  .animals-header {
+    font-size: 16px;
+    padding: 7px 14px;
+  }
+
+  .animal-img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .animal-bubble {
+    font-size: 12px;
+    padding: 6px 9px;
+    max-width: 105px;
+  }
+
+  .animal-dot {
+    width: 18px;
+    height: 18px;
+  }
+
+  .animal-task-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .animal-drop-slot {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .animal-letter {
+    padding: 7px 12px;
+    font-size: 18px;
+  }
+
+  .group-zones,
+  .four-zones {
+    grid-template-columns: 1fr;
+  }
+
+  .group-zone {
+    min-height: 130px;
+  }
+
+  .group-animal-card {
+    width: 72px;
+    min-height: 88px;
+  }
+
+  .group-animal-img {
+    width: 52px !important;
+    height: 44px !important;
+  }
+
+  .animals-nav button {
+    padding: 8px 18px;
+    font-size: 14px;
   }
 }
