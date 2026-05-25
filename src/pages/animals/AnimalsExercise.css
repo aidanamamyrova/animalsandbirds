@@ -388,232 +388,162 @@
 
 /* ===== ИСПРАВЛЕННАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
 
+/* ===== СИНХРОНИЗАЦИЯ ИГРЫ С ЛЕВЫМ САЙДБАРОМ ===== */
 @media (max-width: 768px) {
+  
   .animals-page {
-    padding: 10px;
-  }
-
-  .animals-content {
-    margin-left: 0 !important; /* Убираем отступ слева, так как сайдбар скрывается или уходит наверх */
-    padding: 110px 8px 20px 8px;
+    padding: 10px 2px !important;
     width: 100%;
     box-sizing: border-box;
   }
 
+  /* ВАЖНО: Сдвигаем контент игры вправо ровно на 30% ширины сайдбара */
+  .animals-content {
+    margin-left: 30% !important; /* Уступает место сайдбару */
+    width: 70% !important;        /* Занимает оставшиеся 70% экрана */
+    padding-top: 85px !important; /* Отступ сверху под навибар */
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Защита от горизонтальной прокрутки */
+  }
+
+  /* Уменьшаем тексты хедера игры */
   .animals-title {
-    font-size: 20px;
+    font-size: 15px !important;
+    margin-bottom: 4px;
   }
 
   .animals-progress {
     width: 95%;
-    height: 8px;
+    height: 6px;
+    margin-bottom: 8px;
   }
 
   .animals-header {
-    font-size: 16px;
-    padding: 6px 15px;
-    max-width: 95%;
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    max-width: 98%;
+    border-radius: 15px;
   }
 
   .animals-matching-area {
+    width: 100%;
     max-width: 100%;
-    overflow: visible; /* Разрешаем SVG линиям отображаться корректно */
-    padding: 0 5px;
-    box-sizing: border-box;
+    margin-top: 5px;
+    overflow: visible; /* Линии SVG должны быть видны! */
   }
 
-  /* КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Сохраняем 2 колонки (слева и справа) */
+  /* ГЛАВНОЕ ИСПРАВЛЕНИЕ СЕТКИ: Две колонки строго параллельно */
   .animals-matching-grid {
     display: flex !important;
-    flex-direction: row !important; /* Оставляем горизонтальное расположение */
-    justify-content: space-between;
-    gap: 10px; /* Минимальный зазор для прорисовки линий */
-    width: 100%;
+    flex-direction: row !important; /* Никаких column! Только в один горизонтальный ряд */
+    justify-content: space-between !important;
+    gap: 2px !important; /* Микро-зазор для прорисовки линий */
+    width: 100% !important;
   }
 
   .animals-column {
-    width: 48%; /* Каждая колонка занимает чуть меньше половины экрана */
-    gap: 12px;
+    width: 49% !important; /* Каждая колонка занимает половину от доступных 70% */
+    gap: 12px !important;  /* Расстояние между строками */
   }
 
-  /* Выравнивание элементов внутри рядов */
+  /* Прижимаем элементы к центру (ближе к точкам сопряжения) */
   .animals-column:first-child .animals-match-row {
-    justify-content: flex-end; /* Левая колонка прижимается к центру */
+    justify-content: flex-end !important; /* Левая колонка жмется вправо */
   }
 
   .animals-column:last-child .animals-match-row {
-    justify-content: flex-start; /* Правая колонка прижимается к центру */
+    justify-content: flex-start !important; /* Правая колонка жмется влево */
   }
 
   .animals-match-row {
-    width: 100%;
-    gap: 6px;
+    width: 100% !important;
+    gap: 3px !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
-  /* Пропорционально уменьшаем картинки для мобильных устройств */
+  /* Сжимаем картинки животных под узкий экран */
   .animal-img {
-    width: 55px !important;
-    height: 55px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
   }
 
-  /* Компактные текстовые плашки */
+  /* Текстовые плашечки названий делаем супер-миниатюрными */
   .animal-bubble {
-    font-size: 11px !important;
-    padding: 4px 6px !important;
-    border-radius: 12px;
-    font-weight: bold;
-    word-break: break-word; /* Перенос длинных слов, если не влезают */
-    max-width: 75px;
+    font-size: 9px !important;
+    padding: 2px 4px !important;
+    border-radius: 6px !important;
+    max-width: 42px !important;
+    line-height: 1.1;
+    text-align: center;
+    word-break: break-all; /* Если длинное киргизское слово не влезает, оно аккуратно перенесется */
   }
 
+  /* Круглые точки для кликов */
   .animal-dot {
-    width: 18px !important;
-    height: 18px !important;
-    flex-shrink: 0; /* Чтобы точка не сжималась */
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0 !important; /* Защита от деформации точки */
   }
 
-  /* Включаем отображение линий на мобильных устройствах */
-  .animals-arrows-svg {
-    display: block !important;
+  /* Нижние кнопки навигации "Назад" и "Дальше" */
+  .animals-nav {
+    gap: 8px;
+    margin-top: 15px;
   }
 
-  /* --- Игра "Туура жаз" (Буквы) --- */
+  .animals-nav button {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 15px;
+  }
+
+  /* Адаптация для игры в буквы "Туура жаз" */
   .animal-task-img {
-    width: 130px;
-    height: 130px;
+    width: 90px !important;
+    height: 90px !important;
   }
 
   .animal-slots-row,
   .animal-letters-pool {
-    gap: 6px;
-    margin: 12px 0;
+    gap: 4px;
+    margin: 8px 0;
   }
 
   .animal-drop-slot {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+    border-radius: 6px;
   }
 
   .animal-letter {
-    padding: 6px 12px;
-    font-size: 18px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 6px;
   }
 
-  .animals-nav {
-    gap: 15px;
-    margin-top: 20px;
-  }
-
-  .animals-nav button {
-    padding: 8px 20px;
-    font-size: 14px;
-  }
-
-  /* --- Игра "Бөлүштүр" (Категории) --- */
-  .group-game-area {
-    max-width: 100%;
-  }
-
+  /* Адаптация для игры распределения по зонам "Бөлүштүр" */
   .group-zones,
   .four-zones {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Сетка 2х2 вместо одной длинной строки */
-    gap: 8px;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Перестраиваем зоны в сетку 2х2 вместо длинной строки */
+    gap: 6px !important;
   }
 
   .group-zone {
-    width: auto;
-    min-height: 130px;
-    padding: 6px;
-    border-radius: 15px;
-  }
-
-  .zone-header h3 {
-    font-size: 15px;
-  }
-
-  .zone-img {
-    width: 55px;
-    height: 40px;
-  }
-
-  .group-placed-img {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .group-animals-pool {
-    gap: 6px;
-  }
-
-  .group-animal-card {
-    width: 72px;
-    min-height: 85px;
-    font-size: 11px;
-    padding: 4px;
-  }
-
-  .group-animal-img {
-    width: 50px !important;
-    height: 40px !important;
-  }
-
-  /* Экран завершения */
-  .finish-card {
-    width: 90%;
-    padding: 25px 15px;
-  }
-
-  .finish-icon {
-    font-size: 50px;
-  }
-
-  .finish-card h1 {
-    font-size: 26px;
-  }
-
-  .finish-card p {
-    font-size: 16px;
-  }
-
-  .restart-btn {
-    padding: 10px 25px !important;
-    font-size: 15px;
+    width: auto !important;
+    min-height: 95px !important;
+    padding: 4px !important;
   }
 }
 
-/* Дополнительные точечные правки для сверхмаленьких экранов (до 480px) */
-@media (max-width: 480px) {
-  .animals-content {
-    padding-top: 100px;
-  }
-
-  .animals-matching-grid {
-    gap: 5px;
-  }
-
-  .animal-img {
-    width: 45px !important;
-    height: 45px !important;
-  }
-
+/* Фикс-предохранитель для ультра-маленьких экранов (меньше 360px шириной) */
+@media (max-width: 360px) {
   .animal-bubble {
-    font-size: 9px !important;
-    padding: 3px 4px !important;
-    max-width: 55px;
-  }
-
-  .animal-dot {
-    width: 15px !important;
-    height: 15px !important;
-  }
-  
-  .group-zones,
-  .four-zones {
-    grid-template-columns: 1fr 1fr; /* Оставляем 2х2, чтобы не растягивать экран в бесконечную прокрутку */
+    display: none !important; /* Если экран совсем крошечный, скрываем текст, оставляем только картинки и точки, чтобы верстка физически не ломалась */
   }
 }

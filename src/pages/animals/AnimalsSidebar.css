@@ -64,50 +64,47 @@
 /* ===== MOBILE ADAPTATION FOR SIDEBAR ===== */
 @media (max-width: 768px) {
   .animals-sidebar {
+    /* Сайдбар остается слева, но сужается до 30% ширины экрана */
     position: fixed !important;
-    top: 70px; /* Встает ровно под навибаром */
+    top: 70px;
     left: 0;
-    width: 100% !important;
-    height: auto !important; /* Больше не занимает всю высоту экрана */
+    width: 30% !important; 
+    min-width: 110px !important; /* Ограничение, чтобы меню не схлопнулось на совсем мелких экранах */
+    height: calc(100vh - 70px) !important;
     
-    /* Превращаем в горизонтальную прокрутку, если категорий станет много */
+    /* Сохраняем вертикальное расположение элементов */
     display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     
-    padding: 10px 14px !important;
-    background: #8db5d8;
-    border-right: none !important;
-    border-bottom: 2px solid #7a8ac9;
-    z-index: 999; /* Чтобы быть поверх контента игры, но под навибаром */
-    gap: 10px;
-    
-    /* Скрываем нативный скроллбар для красоты */
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .animals-sidebar::-webkit-scrollbar {
-    display: none; /* Скрывает полосу прокрутки в Chrome/Safari */
+    padding: 12px 6px !important; /* Уменьшаем внутренние отступы, чтобы экономить место */
+    border-right: 2px solid #7a8ac9 !important;
+    border-bottom: none !important;
+    box-sizing: border-box;
   }
 
   .animals-topic-wrapper {
-    margin-bottom: 0 !important; /* Убираем нижний отступ */
-    flex-shrink: 0; /* Кнопки не будут сжиматься */
+    margin-bottom: 8px !important; /* Чуть прижимаем кнопки друг к другу */
+    width: 100%;
+    flex-shrink: 0;
   }
 
   .animals-topic {
-    padding: 8px 16px !important; /* Делаем кнопки компактнее для пальцев */
-    min-height: 44px;
+    padding: 10px 6px !important; /* Делаем плашки кнопок компактнее */
+    min-height: 40px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
   }
 
   .animals-topic:hover {
-    transform: none !important; /* Убираем сдвиг вбок при ховере на мобилках */
+    transform: none !important; /* Убираем десктопный сдвиг вбок, на мобилках он ломает верстку */
   }
 
   .animals-topic-title {
-    font-size: 14px !important; /* Чуть уменьшаем шрифт */
-    white-space: nowrap; /* Текст кнопок не переносится, а идет в одну строку */
+    font-size: 11px !important; /* Уменьшаем шрифт, чтобы длинные слова влезали */
+    line-height: 1.2;
+    white-space: normal; /* Разрешаем тексту переноситься на новую строку внутри узкой кнопки */
+    word-wrap: break-word;
   }
 }
