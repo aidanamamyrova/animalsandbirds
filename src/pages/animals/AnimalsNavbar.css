@@ -36,3 +36,24 @@
 .animals-menu button:hover {
   background: #c6e7f0;
 }
+
+
+/* ===== MOBILE ADAPTATION FOR NAVBAR ===== */
+@media (max-width: 768px) {
+  .animals-navbar {
+    height: 60px !important; /* Уменьшаем высоту с 70px до 60px */
+    padding: 10px 16px !important; /* Меньше отступы по бокам */
+    justify-content: space-between;
+  }
+
+  .animals-logo {
+    font-size: 22px !important; /* Уменьшаем огромный текст логотипа */
+  }
+
+  /* Если у вас в навбаре есть кнопки меню, тоже их уменьшаем */
+  .animals-menu button {
+    margin-left: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+}

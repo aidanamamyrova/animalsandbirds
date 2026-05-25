@@ -60,3 +60,54 @@
   text-align: center;
   line-height: 1.25;
 }
+
+/* ===== MOBILE ADAPTATION FOR SIDEBAR ===== */
+@media (max-width: 768px) {
+  .animals-sidebar {
+    position: fixed !important;
+    top: 70px; /* Встает ровно под навибаром */
+    left: 0;
+    width: 100% !important;
+    height: auto !important; /* Больше не занимает всю высоту экрана */
+    
+    /* Превращаем в горизонтальную прокрутку, если категорий станет много */
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    
+    padding: 10px 14px !important;
+    background: #8db5d8;
+    border-right: none !important;
+    border-bottom: 2px solid #7a8ac9;
+    z-index: 999; /* Чтобы быть поверх контента игры, но под навибаром */
+    gap: 10px;
+    
+    /* Скрываем нативный скроллбар для красоты */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .animals-sidebar::-webkit-scrollbar {
+    display: none; /* Скрывает полосу прокрутки в Chrome/Safari */
+  }
+
+  .animals-topic-wrapper {
+    margin-bottom: 0 !important; /* Убираем нижний отступ */
+    flex-shrink: 0; /* Кнопки не будут сжиматься */
+  }
+
+  .animals-topic {
+    padding: 8px 16px !important; /* Делаем кнопки компактнее для пальцев */
+    min-height: 44px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .animals-topic:hover {
+    transform: none !important; /* Убираем сдвиг вбок при ховере на мобилках */
+  }
+
+  .animals-topic-title {
+    font-size: 14px !important; /* Чуть уменьшаем шрифт */
+    white-space: nowrap; /* Текст кнопок не переносится, а идет в одну строку */
+  }
+}
