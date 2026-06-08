@@ -483,8 +483,8 @@
 }
 
 .animal-img {
-  width: 68px !important;
-  height: 68px !important;
+  width: 85px !important;
+  height: 70px !important;
   object-fit: contain !important;
 }
 
@@ -590,8 +590,8 @@
   }
 
   .zone-img {
-    width: 24px !important;
-    height: 18px !important;
+    width: 42px !important;
+    height: 32px !important;
     object-fit: contain !important;
   }
 
@@ -617,7 +617,7 @@
   max-height: none !important;
   overflow-y: visible !important;
   display: grid !important;
-  grid-template-columns: repeat(2, 140px) !important;
+  grid-template-columns: repeat(2, 120px) !important;
   justify-content: center !important;
   gap: 8px !important;
   padding: 4px !important;
@@ -630,9 +630,9 @@
   }
 
   .group-animal-card {
-  width: 140px !important;
+  width: 120px !important;
   min-height: 58px !important;
-  padding: 5px !important;
+  padding: 2px !important;
   border-radius: 10px !important;
   box-sizing: border-box !important;
   }
