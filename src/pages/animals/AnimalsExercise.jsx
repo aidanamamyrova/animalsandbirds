@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./AnimalsExercise.css";
 import { polyfill } from 'mobile-drag-drop';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
+import confetti from "canvas-confetti";
 
 polyfill({
     dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
@@ -196,9 +197,26 @@ function AnimalsExercise() {
     setSelectedMobileAnimal(null);
   };
 
+ const fireConfetti = () => {
+  confetti({
+    particleCount: 150,
+    angle: 60,
+    spread: 100,
+    origin: { x: 0, y: 0.7 },
+  });
+
+  confetti({
+    particleCount: 150,
+    angle: 120,
+    spread: 100,
+    origin: { x: 1, y: 0.7 },
+  });
+};
+
   const handleNextClick = () => {
     if (currentStep === 8) {
       setIsFinished(true);
+       fireConfetti();
       return;
     }
     setCurrentStep(currentStep + 1);

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./AnimalsExercise.css";
+import confetti from "canvas-confetti";
 
 const getImageUrl = (imgName) => {
   if (!imgName) return "";
@@ -125,7 +126,7 @@ function BirdsExercise() {
     1: { word: ["Т", "О", "О", "К"], letters: ["О", "К", "Т", "О"], img: "chicken.png" },
     2: { word: ["Ө", "Р", "Д", "Ө", "К"], letters: ["Д", "Ө", "К", "Р", "Ө"], img: "duck.png" },
     3: { word: ["К", "А", "З"], letters: ["З", "К", "А"], img: "goose.png" },
-    5: { word: ["Л", "Е", "Й", "Л", "Е", "К"], letters: ["Е", "К", "Й", "Л", "Л", "Е"], img: "stork.png" },
+    5: { word: ["И", "Л", "Е", "Г","И", "Л", "Е", "К"], letters: ["Л", "Е", "И", "И","Г", "Л", "Е", "К"], img: "stork.png" },
     6: { word: ["Ү", "К", "Ү"], letters: ["Ү", "К", "Ү"], img: "sova.png" },
   };
 
@@ -352,12 +353,29 @@ function BirdsExercise() {
     }));
   };
 
+const fireConfetti = () => {
+  confetti({
+    particleCount: 150,
+    angle: 60,
+    spread: 100,
+    origin: { x: 0, y: 0.7 },
+  });
+
+  confetti({
+    particleCount: 150,
+    angle: 120,
+    spread: 100,
+    origin: { x: 1, y: 0.7 },
+  });
+};
+
   const handleNextClick = () => {
     if (currentStep < totalSteps - 1) {
       setCurrentStep(currentStep + 1);
       resetStepState();
     } else {
       setIsFinished(true);
+       fireConfetti();
     }
   };
 
