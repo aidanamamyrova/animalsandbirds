@@ -411,9 +411,10 @@
   }
 
  .animals-header {
-    display: block !important;
-  width: fit-content !important;
-  margin: 10px auto 18px auto !important;
+  display: inline-block !important;
+  font-size: 13px !important;
+  padding: 5px 16px !important;
+  margin: 8px auto 14px auto !important;
   text-align: center !important;
 }
 
