@@ -136,13 +136,10 @@ function BirdsExercise() {
     { id: "eagle", name: "Бүркүт", img: "berkut.png", group: "steppe" },
     { id: "owl", name: "Үкү", img: "sova.png", group: "forest" },
     { id: "crow", name: "Карга", img: "karga.png", group: "forest" },
-    { id: "stork", name: "Лейлек", img: "stork.png", group: "lake" },
+    { id: "stork", name: "Илегилек", img: "stork.png", group: "lake" },
     { id: "swallow", name: "Чабалекей", img: "chabalekey.png", group: "forest" },
-    { id: "falcon", name: "Ителги", img: "itelgi.png", group: "steppe" },
-    { id: "duck", name: "Өрдөк", img: "duck.png", group: "lake" },
     { id: "goose", name: "Каз", img: "goose.png", group: "lake" },
     { id: "swan", name: "Ак куу", img: "swan.png", group: "lake" },
-    { id: "seagull", name: "Чардак", img: "chardak.png", group: "lake" },
   ];
 
   const zones = [
