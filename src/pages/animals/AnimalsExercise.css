@@ -449,9 +449,10 @@
   column-gap: 8px !important;
 }
 
-/* Левая сторона: картинка + кружок, название под картинкой */
+/* левая сторона: животное + кружок */
 .animals-column:first-child .animals-match-row {
-  grid-template-columns: 72px 15px !important;
+  grid-template-columns: 82px 18px !important;
+  column-gap: 10px !important;
 }
 
 .animals-column:first-child .animal-img {
@@ -469,9 +470,10 @@
   grid-row: 2 !important;
 }
 
-/* Правая сторона: кружок + картинка, название под картинкой */
+/* правая сторона: кружок + животное */
 .animals-column:last-child .animals-match-row {
-  grid-template-columns: 15px 72px !important;
+  grid-template-columns: 18px 82px !important;
+  column-gap: 10px !important;
 }
 
 .animals-column:last-child .animal-dot {
@@ -490,8 +492,8 @@
 }
 
 .animal-img {
-  width: 75px !important;
-  height: 75px !important;
+  width: 80px !important;
+  height: 80px !important;
   object-fit: contain !important;
 }
 
@@ -511,7 +513,7 @@
 .animal-dot {
   width: 15px !important;
   height: 15px !important;
-  flex-shrink: 0 !important;
+  justify-self: center !important;
 }
 
 
