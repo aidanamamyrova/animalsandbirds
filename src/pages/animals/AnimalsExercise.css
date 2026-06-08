@@ -690,25 +690,26 @@
 }
 
   .finish-screen {
-     width: 100% !important;
-  min-height: 60vh !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
 
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
 
-  margin-top: 30px !important;
+  padding: 20px 0 !important;
+  margin: 0 !important;
 
   position: static !important;
-  height: auto !important;
   }
 
   .finish-card {
-    width: 85% !important;
-  max-width: 280px !important;
+  width: 92% !important;
+  max-width: 340px !important;
 
-  padding: 18px 12px !important;
-  border-radius: 18px !important;
+  padding: 28px 18px !important;
+  border-radius: 22px !important;
   }
 
   .finish-icon {
