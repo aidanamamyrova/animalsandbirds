@@ -69,28 +69,29 @@
 
 @media (max-width: 768px) {
 
-  .mobile-menu-btn {
-    display: block;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 3001;
+.mobile-menu-btn {
+  display: block;
+  position: fixed;
+  top: 133px;
+  left: 14px;
+  z-index: 3001;
 
-    background: white;
-    border: none;
-    border-radius: 8px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 
-    font-size: 24px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
+  font-size: 32px;
+  padding: 0;
+  cursor: pointer;
+  color: #1f3519;
+}
 
   .animals-sidebar {
     position: fixed !important;
     top: 60px !important;
 
-    left: -240px !important; /* спрятан */
-    width: 240px !important;
+   left: -210px !important;
+   width: 210px !important;
 
     height: calc(100vh - 60px) !important;
 
@@ -98,6 +99,7 @@
 
     overflow-y: auto;
     z-index: 3000;
+    padding-top: 45px !important;
   }
 
   .animals-sidebar.open {
@@ -105,15 +107,18 @@
   }
 
   .close-sidebar-btn {
-    display: block;
-    margin-left: auto;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 12px;
 
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 
-    font-size: 30px;
-    cursor: pointer;
-  }
+  font-size: 28px;
+  cursor: pointer;
+  color: #1f3519;
+}
 
   .sidebar-overlay {
     position: fixed;
