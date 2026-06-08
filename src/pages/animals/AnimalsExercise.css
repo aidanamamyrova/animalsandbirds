@@ -690,11 +690,11 @@
 }
 
   .finish-screen {
- width: 70% !important;
+ width: 80% !important;
   max-width: 250px !important;
   height: 40vh !important;
 
-  margin: 20px auto !important;
+  margin: 50px auto 20px auto !important;
   padding: 20px !important;
 
   border-radius: 30px !important;
