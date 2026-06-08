@@ -554,32 +554,34 @@
   border-radius: 10px !important;
 }
 
-  .group-game-area {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    margin-top: 6px !important;
-    display: grid !important;
-    grid-template-columns: 42% 56% !important;
-  column-gap: 4px !important;
-    align-items: start !important;
-  }
+.group-game-area {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-top: 12px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
 
   .group-zones,
   .group-zones.four-zones {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 7px !important;
+   width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 8px !important;
   }
 
   .group-zone {
-    width: 100% !important;
-    max-height: none !important;
-     min-height: 72px !important;
-    padding: 3px !important;
-    border-radius: 12px !important;
-    box-sizing: border-box !important;
+  width: 47% !important;
+  max-height: none !important;
+  min-height: 115px !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
   }
 
   .zone-header h3 {
@@ -611,31 +613,34 @@
   }
 
   .group-animals-pool {
-    width: 100% !important;
-    max-height: 430px !important;
-    overflow-y: auto !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-     gap: 4px !important;
-    padding: 4px !important;
-    margin-top: 0 !important;
-    box-sizing: border-box !important;
-    background: rgba(255, 255, 255, 0.65) !important;
-    border: 1px solid #ddd !important;
-    border-radius: 10px !important;
+  width: 100% !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+
+  gap: 8px !important;
+  padding: 4px !important;
+  margin-top: 10px !important;
+
+  box-sizing: border-box !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid #ddd !important;
+  border-radius: 10px !important;
   }
 
   .group-animal-card {
-    width: auto !important;
-   min-height: 56px !important;
-  padding: 2px !important;
-    border-radius: 9px !important;
-    box-sizing: border-box !important;
+     width: auto !important;
+  min-height: 70px !important;
+  padding: 5px !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
   }
 
   .group-animal-img {
-    width: 34px !important;
-  height: 28px !important;
+   width: 48px !important;
+  height: 42px !important;
     object-fit: contain !important;
   }
 
