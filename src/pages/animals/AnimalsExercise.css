@@ -416,53 +416,94 @@
   margin: 10px 0 18px 0 !important;
 }
 
- .animals-matching-area {
+.animals-matching-area {
   max-width: 100% !important;
-  margin-top: 10px !important;
+  margin-top: 14px !important;
 }
 
 .animals-matching-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 18px !important;
+  gap: 22px !important;
   align-items: start !important;
 }
 
 .animals-column {
   width: 100% !important;
-  gap: 18px !important;
+  gap: 22px !important;
 }
 
 .animals-match-row {
   width: 100% !important;
-  justify-content: center !important;
-  gap: 5px !important;
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
   align-items: center !important;
+  justify-content: center !important;
+  row-gap: 5px !important;
+  column-gap: 8px !important;
+}
+
+/* Левая сторона: картинка + кружок, название под картинкой */
+.animals-column:first-child .animals-match-row {
+  grid-template-columns: 72px 15px !important;
+}
+
+.animals-column:first-child .animal-img {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+.animals-column:first-child .animal-dot {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+
+.animals-column:first-child .animal-bubble {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+}
+
+/* Правая сторона: кружок + картинка, название под картинкой */
+.animals-column:last-child .animals-match-row {
+  grid-template-columns: 15px 72px !important;
+}
+
+.animals-column:last-child .animal-dot {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
+
+.animals-column:last-child .animal-img {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+}
+
+.animals-column:last-child .animal-bubble {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
 }
 
 .animal-img {
-  width: 62px !important;
-  height: 62px !important;
+  width: 68px !important;
+  height: 68px !important;
   object-fit: contain !important;
 }
 
 .animal-bubble {
-  min-width: 70px !important;
-  max-width: 92px !important;
+  min-width: 64px !important;
+  max-width: 78px !important;
   font-size: 10px !important;
-  padding: 4px 7px !important;
+  padding: 4px 6px !important;
   border-radius: 14px !important;
   line-height: 1.1 !important;
   text-align: center !important;
   white-space: normal !important;
   word-break: break-word !important;
+  justify-self: center !important;
 }
 
 .animal-dot {
-  width: 14px !important;
-  height: 14px !important;
+  width: 15px !important;
+  height: 15px !important;
   flex-shrink: 0 !important;
 }
 
