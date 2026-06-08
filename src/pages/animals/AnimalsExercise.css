@@ -483,8 +483,8 @@
 }
 
 .animal-img {
-  width: 95px !important;
-  height: 90px !important;
+  width: 68px !important;
+  height: 68px !important;
   object-fit: contain !important;
 }
 
@@ -638,8 +638,8 @@
   }
 
   .group-animal-img {
-   width: 48px !important;
-  height: 42px !important;
+   width: 65px !important;
+  height: 62px !important;
     object-fit: contain !important;
   }
 
