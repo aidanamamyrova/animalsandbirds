@@ -9,14 +9,11 @@ function AnimalsLayout() {
 
   return (
     <div className="animals-wrapper">
-      <AnimalsNavbar />
+      <AnimalsNavbar
+  onMenuClick={() => setIsSidebarOpen(true)}
+/>
 
-      <button
-        className="mobile-menu-btn"
-        onClick={() => setIsSidebarOpen(true)}
-      >
-        ☰
-      </button>
+      
 
       {isSidebarOpen && (
         <div

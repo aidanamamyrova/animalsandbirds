@@ -69,25 +69,6 @@
 
 @media (max-width: 768px) {
 
-.mobile-menu-btn {
-  display: block;
-  position: fixed;
-  top: 142px;
-  left: 24px;
-  z-index: 4000;
-
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-
-  font-size: 34px;
-  line-height: 1;
-  padding: 0;
-  margin: 0;
-
-  color: #1f3519;
-  cursor: pointer;
-}
 
   .animals-sidebar {
     position: fixed !important;
