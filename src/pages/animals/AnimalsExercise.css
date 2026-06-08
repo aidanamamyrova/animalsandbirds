@@ -425,7 +425,7 @@
 
 .animals-matching-area {
   max-width: 100% !important;
-  margin-top: 14px !important;
+ margin-top: 24px !important;
 }
 
 .animals-matching-grid {
@@ -518,7 +518,7 @@
 
 
   .animals-write-area {
-    margin-top: 6px !important;
+    margin-top: 24px !important;
   }
 
   .animal-task-img {
