@@ -451,7 +451,8 @@
 
 /* левая сторона: животное + кружок */
 .animals-column:first-child .animals-match-row {
-  grid-template-columns: 82px 18px !important;
+ grid-template-columns: 90px 18px !important;
+  grid-template-rows: 86px auto !important;
   column-gap: 10px !important;
 }
 
@@ -472,7 +473,8 @@
 
 /* правая сторона: кружок + животное */
 .animals-column:last-child .animals-match-row {
-  grid-template-columns: 18px 82px !important;
+  grid-template-columns: 18px 90px !important;
+  grid-template-rows: 86px auto !important;
   column-gap: 10px !important;
 }
 
@@ -514,6 +516,7 @@
   width: 15px !important;
   height: 15px !important;
   justify-self: center !important;
+  align-self: center !important;
 }
 
 
