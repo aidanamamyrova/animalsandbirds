@@ -131,7 +131,6 @@ function BirdsExercise() {
 
   const groupBirds = [
     { id: "turkey", name: "Индюк", img: "turkey.png", group: "domestic" },
-    { id: "sparrow", name: "Таранчы", img: "taranchy.png", group: "domestic" },
     { id: "eagle", name: "Бүркүт", img: "berkut.png", group: "steppe" },
     { id: "owl", name: "Үкү", img: "sova.png", group: "forest" },
     { id: "crow", name: "Карга", img: "karga.png", group: "forest" },
