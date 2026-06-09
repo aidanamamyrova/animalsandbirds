@@ -8,34 +8,34 @@ polyfill({
     dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
 });
 
-import cowImg from "../../assets/animals/cow.png";
-import horseImg from "../../assets/animals/horse.png";
-import goatImg from "../../assets/animals/goat.png";
-import ulakImg from "../../assets/animals/ulak.png";
-import muzoImg from "../../assets/animals/muzo.png";
-import kulunImg from "../../assets/animals/kulun.png";
+import cowImg from "../../assets/zhanybarlar/cow.png";
+import horseImg from "../../assets/zhanybarlar/horse.png";
+import goatImg from "../../assets/zhanybarlar/goat.png";
+import ulakImg from "../../assets/zhanybarlar/ulak.png";
+import muzoImg from "../../assets/zhanybarlar/muzo.png";
+import kulunImg from "../../assets/zhanybarlar/kulun.png";
 
-import wolfImg from "../../assets/animals/wolf.png";
-import rabbitImg from "../../assets/animals/rabbit.png";
-import bearImg from "../../assets/animals/bear.png";
-import bearbabyImg from "../../assets/animals/bearbaby.png";
-import wolfbabyImg from "../../assets/animals/wolfbaby.png";
-import rabbitbabyImg from "../../assets/animals/rabbitbaby.png";
+import wolfImg from "../../assets/zhanybarlar/wolf.png";
+import rabbitImg from "../../assets/zhanybarlar/rabbit.png";
+import bearImg from "../../assets/zhanybarlar/bear.png";
+import bearbabyImg from "../../assets/zhanybarlar/bearbaby.png";
+import wolfbabyImg from "../../assets/zhanybarlar/wolfbaby.png";
+import rabbitbabyImg from "../../assets/zhanybarlar/rabbitbaby.png";
 
-import foxImg from "../../assets/animals/fox.png";
-import arkarImg from "../../assets/animals/arkar.png";
-import marmotImg from "../../assets/animals/marmot.png";
-import mountainImg from "../../assets/animals/mountain.png";
-import burrowImg from "../../assets/animals/burrow.png";
-import forestImg from "../../assets/animals/forest.png";
+import foxImg from "../../assets/zhanybarlar/fox.png";
+import arkarImg from "../../assets/zhanybarlar/arkar.png";
+import marmotImg from "../../assets/zhanybarlar/marmot.png";
+import mountainImg from "../../assets/zhanybarlar/mountain.png";
+import burrowImg from "../../assets/zhanybarlar/burrow.png";
+import forestImg from "../../assets/zhanybarlar/forest.png";
 
-import koiImg from "../../assets/animals/koi.png";
-import pigImg from "../../assets/animals/pig.png";
-import babydogImg from "../../assets/animals/babydog.png";
-import mondoloyImg from "../../assets/animals/mondoloy.png";
-import chondoloyImg from "../../assets/animals/chondoloy.png";
+import koiImg from "../../assets/zhanybarlar/koi.png";
+import pigImg from "../../assets/zhanybarlar/pig.png";
+import babydogImg from "../../assets/zhanybarlar/babydog.png";
+import mondoloyImg from "../../assets/zhanybarlar/mondoloy.png";
+import chondoloyImg from "../../assets/zhanybarlar/chondoloy.png";
 
-import homeImg from "../../assets/animals/home.png";
+import homeImg from "../../assets/zhanybarlar/home.png";
 
 const imageMap = {
   "cow.png": cowImg,

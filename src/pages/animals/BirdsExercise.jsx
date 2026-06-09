@@ -4,12 +4,12 @@ import confetti from "canvas-confetti";
 
 const getImageUrl = (imgName) => {
   if (!imgName) return "";
-  return new URL(`../../assets/animals/${imgName}`, import.meta.url).href;
+  return new URL(`../../assets/zhanybarlar/${imgName}`, import.meta.url).href;
 };
 
 const getAudioUrl = (audioName) => {
   if (!audioName) return "";
-  return new URL(`../../assets/animals/sounds/${audioName}`, import.meta.url).href;
+  return new URL(`../../assets/zhanybarlar/sounds/${audioName}`, import.meta.url).href;
 };
 
 function BirdsExercise() {
