@@ -469,11 +469,12 @@ function AnimalsExercise() {
                 <div key={item.id} className="animals-match-row">
                   <div className="animal-bubble">{item.text}</div>
 
-                  <img
-                    src={imageMap[item.img]}
-                    className="animal-img"
-                    alt=""
-                  />
+                 <img
+  src={imageMap[item.img]}
+  className="animal-img"
+  alt=""
+  draggable={false}
+/>
 
                   <div
                     className={`animal-dot
@@ -508,11 +509,12 @@ function AnimalsExercise() {
                     onClick={(e) => handlePointClick(item.id, "right", e)}
                   ></div>
 
-                  <img
-                    src={imageMap[item.img]}
-                    className="animal-img"
-                    alt=""
-                  />
+               <img
+  src={imageMap[item.img]}
+  className="animal-img"
+  alt=""
+  draggable={false}
+/>
 
                   <div className="animal-bubble">{item.text}</div>
                 </div>
@@ -524,11 +526,12 @@ function AnimalsExercise() {
 
       {currentWriteGame && (
         <div className="animals-write-area">
-          <img
-            src={imageMap[currentWriteGame.img]}
-            className="animal-task-img"
-            alt=""
-          />
+         <img
+  src={imageMap[currentWriteGame.img]}
+  className="animal-task-img"
+  alt=""
+  draggable={false}
+/>
 
           <div className="animal-slots-row">
             {correctWord.map((_, i) => (

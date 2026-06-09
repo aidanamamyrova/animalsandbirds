@@ -497,6 +497,8 @@
   width: 86px !important;
   height: 86px !important;
   object-fit: contain !important;
+  -webkit-user-drag: none !important;
+  user-select: none !important;
 }
 
 .animal-bubble {
@@ -528,6 +530,8 @@
     width: 145px !important;
     height: 145px !important;
     object-fit: contain !important;
+    -webkit-user-drag: none !important;
+    user-select: none !important;
   }
 
   .animal-slots-row {
@@ -730,6 +734,7 @@
   .restart-btn {
     padding: 10px 16px !important;
     font-size: 12px !important;
+    font-family: "Times New Roman", serif !important;
   }
   
 }

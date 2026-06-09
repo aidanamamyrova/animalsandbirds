@@ -12,7 +12,7 @@ function AnimalsNavbar({ onMenuClick }) {
       </button>
 
       <div className="animals-logo">
-        🐾 Жаныбарлар дүйнөсү
+        🐾 Жаныбарлар жана канаттуулар
       </div>
 
     </div>
