@@ -82,3 +82,21 @@
     padding: 0;
   }
 }
+
+@media (min-width: 769px) {
+  .navbar-menu-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-menu-btn {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
