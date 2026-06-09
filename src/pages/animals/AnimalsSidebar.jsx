@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import "./AnimalsSidebar.css";
 
 function AnimalsSidebar({ isOpen, onClose }) {
-  const menuData = [
-    { title: "Үй/Жапайы жаныбарлары", path: "/" },
-    { title: "Канаттуулар", path: "/birds" },
-  ];
+ const menuData = [
+  { title: "Үй/Жапайы жаныбарлары", path: "/animals" },
+  { title: "Канаттуулар", path: "/animals/birds" },
+];
 
   return (
     <div className={`animals-sidebar ${isOpen ? "open" : ""}`}>

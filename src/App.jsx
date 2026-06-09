@@ -58,7 +58,7 @@ function App() {
             <Route path="/san_exercise" element={<SandarExercise/>}/>
             <Route path="/dene" element={<Dene/>}/>
             <Route path="/dene_exercise" element={<DeneExercise/>}/>
-  <Route path="/" element={<AnimalsLayout />}>
+<Route path="/animals" element={<AnimalsLayout />}>
   <Route index element={<AnimalsExercise />} />
   <Route path="birds" element={<BirdsExercise />} />
 </Route>
