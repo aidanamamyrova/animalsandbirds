@@ -36,7 +36,10 @@
 .animals-menu button:hover {
   background: #c6e7f0;
 }
-
+  
+  .navbar-menu-btn {
+  display: none;
+}
 
 /* ===== МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ НАВБАРА ===== */
 @media (max-width: 768px) {
@@ -54,7 +57,7 @@
   }
 
   .animals-logo {
-    font-size: 20px !important; 
+    font-size: 14px !important; 
   }
 
   .animals-menu button {
@@ -63,12 +66,6 @@
     font-size: 13px !important;
   }
 
-  
-  .navbar-menu-btn {
-  display: none;
-}
-
-@media (max-width: 768px) {
 
   .navbar-menu-btn {
     display: block;
