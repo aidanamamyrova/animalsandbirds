@@ -371,11 +371,11 @@ const isCurrentStepCorrect = () => {
     );
   }
 
-  if (currentStep === 9) {
-    return groupAnimals.every((animal) =>
-      placedGroups[animal.group].includes(animal.id)
-    );
-  }
+if (currentStep === 9) {
+  return groupBirds.every((bird) =>
+    placedGroups[bird.group].includes(bird.id)
+  );
+}
 
   return false;
 };
