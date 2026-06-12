@@ -296,6 +296,17 @@ function BirdsExercise() {
     setUsedLetterIds((prev) => prev.filter((id) => id !== selectedLetter.id));
   };
 
+  const handleLetterClick = (letterData) => {
+  const emptyIndex = placedLetters.findIndex(
+    (item, index) =>
+      index < correctWord.length && item === null
+  );
+
+  if (emptyIndex === -1) return;
+
+  placeLetterToSlot(letterData, emptyIndex);
+};
+
   const getLetterClass = (letterData, index) => {
     if (!letterData) return "animal-drop-slot";
 
@@ -614,15 +625,13 @@ const getFinishResult = () => {
               if (usedLetterIds.includes(letterData.id)) return null;
 
               return (
-                <div
-                  key={letterData.id}
-                  className="animal-letter"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, letterData)}
-                  onTouchEnd={(e) => handleLetterTouchEnd(e, letterData)}
-                >
-                  {letter}
-                </div>
+               <div
+  key={letterData.id}
+  className="animal-letter"
+  onClick={() => handleLetterClick(letterData)}
+>
+  {letter}
+</div>
               );
             })}
           </div>
