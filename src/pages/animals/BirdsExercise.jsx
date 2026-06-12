@@ -355,7 +355,7 @@ function BirdsExercise() {
     }));
   };
 
-const TOTAL_GAMES = 9;
+const TOTAL_GAMES = 10;
 
 const isCurrentStepCorrect = () => {
   if (currentMatching) {
@@ -371,7 +371,7 @@ const isCurrentStepCorrect = () => {
     );
   }
 
-  if (currentStep === 8) {
+  if (currentStep === 9) {
     return groupAnimals.every((animal) =>
       placedGroups[animal.group].includes(animal.id)
     );
@@ -406,7 +406,7 @@ const getFinishResult = () => {
     setCompletedSteps(updatedCompleted);
   }
 
-  if (currentStep === 8) {
+  if (currentStep === 9) {
     setIsFinished(true);
 
     if (updatedCompleted.length >= 6) {
@@ -427,34 +427,45 @@ const getFinishResult = () => {
     }
   };
 
-  if (isFinished) {
-    return (
-      <div className="finish-screen">
-        <div className="finish-card">
-          <div className="finish-icon">🏆</div>
-          <h1>Азаматсың!</h1>
-          <p>Көнүгүүнүн аягы</p>
+ if (isFinished) {
+  const result = getFinishResult();
 
-          <button
-            className="restart-btn"
-            onClick={() => {
-              setCurrentStep(0);
-              setPlacedGroups({
-                domestic: [],
-                forest: [],
-                steppe: [],
-                lake: [],
-              });
-              setIsFinished(false);
-              resetStepState();
-            }}
-          >
-            Кайра аткаруу
-          </button>
+  return (
+    <div className="finish-screen">
+      <div className="finish-card">
+        <div className="finish-icon">{result.icon}</div>
+
+        <h1>{result.title}</h1>
+
+        <div className="finish-score">
+          Упай: {completedSteps.length} / {TOTAL_GAMES}
         </div>
+
+        <button
+          className="restart-btn"
+          onClick={() => {
+            setCurrentStep(0);
+            setPlacedGroups({
+              domestic: [],
+              forest: [],
+              steppe: [],
+              lake: [],
+            });
+            setCompletedSteps([]);
+            setIsFinished(false);
+            resetStepState();
+          }}
+        >
+          Кайра аткаруу
+        </button>
+
+        <Link to="/animals" className="birds-link">
+          Үй / жапайы жаныбарлар бөлүмүнө өтүү →
+        </Link>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <>
