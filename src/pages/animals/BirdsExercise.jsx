@@ -201,21 +201,42 @@ function BirdsExercise() {
           ? currentMatching.correct[activeStart.id] === id
           : currentMatching.correct[id] === activeStart.id;
 
-      setConnections((prev) => [
-        ...prev,
-        { start: activeStart, end: point, isCorrect },
-      ]);
+   if (isCorrect) {
+  setConnections((prev) => [
+    ...prev,
+    { start: activeStart, end: point, isCorrect: true },
+  ]);
 
-      if (isCorrect) {
-        setCorrectDots((prev) => [...prev, activeStart.id, point.id]);
-      } else {
-        setWrongDots((prev) => [...prev, activeStart.id, point.id]);
-        setTimeout(() => {
-          setWrongDots((prev) =>
-            prev.filter((d) => d !== activeStart.id && d !== point.id)
-          );
-        }, 500);
-      }
+  setCorrectDots((prev) => [...prev, activeStart.id, point.id]);
+} else {
+
+  setConnections((prev) => [
+    ...prev,
+    { start: activeStart, end: point, isCorrect: false },
+  ]);
+
+  setWrongDots((prev) => [...prev, activeStart.id, point.id]);
+
+  setTimeout(() => {
+
+    setConnections((prev) =>
+      prev.filter(
+        (conn) =>
+          !(
+            conn.start.id === activeStart.id &&
+            conn.end.id === point.id
+          )
+      )
+    );
+
+    setWrongDots((prev) =>
+      prev.filter(
+        (d) => d !== activeStart.id && d !== point.id
+      )
+    );
+
+  }, 500);
+}
     }
 
     setActiveStart(null);
