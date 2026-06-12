@@ -368,6 +368,27 @@
   cursor: pointer;
 }
 
+  .finish-score {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2f4a22;
+  margin-bottom: 18px;
+}
+
+.birds-link {
+  display: block;
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2f4a22;
+  text-decoration: none;
+}
+
+.birds-link:hover {
+  text-decoration: underline;
+
+}
+
 @keyframes correctPulse {
   0% { transform: scale(1); box-shadow: 0 0 0 #4caf50; }
   50% { transform: scale(1.08); box-shadow: 0 0 15px #4caf50; }
