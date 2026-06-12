@@ -130,7 +130,7 @@ function BirdsExercise() {
     2: { word: ["Ө", "Р", "Д", "Ө", "К"], letters: ["Д", "Ө", "К", "Р", "Ө"], img: "duck.png" },
     3: { word: ["К", "А", "З"], letters: ["З", "К", "А"], img: "goose.png" },
     5: { word: ["И", "Л", "Е", "Г","И", "Л", "Е", "К"], letters: ["Л", "Е", "И", "И","Г", "Л", "Е", "К"], img: "stork.png" },
-    6: { word: ["Ү", "К", "Ү"], letters: ["Ү", "К", "Ү"], img: "sova.png" },
+    6: { word: ["Ү", "К", "Ү"], letters: ["К", "Y", "Ү"], img: "sova.png" },
   };
 
   const groupBirds = [
@@ -386,6 +386,22 @@ function BirdsExercise() {
       ...prev,
       [groupName]: prev[groupName].filter((id) => id !== birdId),
     }));
+  };
+
+   const fireConfetti = () => {
+    confetti({
+      particleCount: 150,
+      angle: 60,
+      spread: 100,
+      origin: { x: 0, y: 0.7 },
+    });
+  
+    confetti({
+      particleCount: 150,
+      angle: 120,
+      spread: 100,
+      origin: { x: 1, y: 0.7 },
+    });
   };
 
 const TOTAL_GAMES = 10;
