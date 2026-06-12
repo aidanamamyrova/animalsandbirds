@@ -84,11 +84,12 @@ function BirdsExercise() {
         { id: "l3", text: "Ак куу", img: "swan.png" },
       ],
       right: [
-        { id: "r1", text: "Үй", img: "home.png" },
-        { id: "r2", text: "Тоо", img: "mountain.png" },
-        { id: "r3", text: "Көл", img: "lake.png" },
+        { id: "r1", text: "Тоо", img: "mountain.png" },
+        { id: "r2", text: "Көл", img: "lake.png" },
+        { id: "r3", text: "Үй", img: "home.png" },
+       
       ],
-      correct: { l1: "r1", l2: "r2", l3: "r3" },
+      correct: { l1: "r3", l2: "r1", l3: "r2" },
     },
 
     7: {
@@ -116,10 +117,10 @@ function BirdsExercise() {
       ],
       right: [
         { id: "r1", text: "Кыйкуулайт", img: "sound.png", audio: "turna.mp3" },
-        { id: "r2", text: "Кайкылдайт", img: "sound.png", audio: "swan.mp3" },
-        { id: "r3", text: "Тоңкулдайт", img: "sound.png", audio: "tonkuldak.mp3" },
+        { id: "r2", text: "Тоңкулдайт", img: "sound.png", audio: "tonkuldak.mp3" },
+        { id: "r3", text: "Кайкылдайт", img: "sound.png", audio: "swan.mp3" },
       ],
-      correct: { l1: "r2", l2: "r3", l3: "r1" },
+      correct: { l1: "r3", l2: "r2", l3: "r1" },
       soundMode: true,
     },
   };

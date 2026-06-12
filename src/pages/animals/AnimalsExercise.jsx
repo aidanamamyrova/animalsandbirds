@@ -162,7 +162,7 @@ function AnimalsExercise() {
       clickMode: true,
     },
     7: {
-      word: ["Ч", "О", "Н", "Д", "Ө", "Л", "Ө", "Й"],
+      word: ["Ч", "Ө", "Н", "Д", "Ө", "Л", "Ө", "Й"],
       letters: ["Ө", "Ч", "Д", "Й", "Н", "Ө", "Л", "Ө"],
       img: "chondoloy.png",
       clickMode: true,
