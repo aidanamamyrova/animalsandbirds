@@ -130,7 +130,7 @@ function BirdsExercise() {
     2: { word: ["Ө", "Р", "Д", "Ө", "К"], letters: ["Д", "Ө", "К", "Р", "Ө"], img: "duck.png" },
     3: { word: ["К", "А", "З"], letters: ["З", "К", "А"], img: "goose.png" },
     5: { word: ["И", "Л", "Е", "Г","И", "Л", "Е", "К"], letters: ["Л", "Е", "И", "И","Г", "Л", "Е", "К"], img: "stork.png" },
-    6: { word: ["Ү", "К", "Ү"], letters: ["К", "Y", "Ү"], img: "sova.png" },
+    6: { word: ["Ү", "К", "Ү"], letters: ["К", "Ү", "Ү"], img: "sova.png" },
   };
 
   const groupBirds = [
@@ -140,7 +140,7 @@ function BirdsExercise() {
     { id: "crow", name: "Карга", img: "karga.png", group: "forest" },
     { id: "stork", name: "Илегилек", img: "stork.png", group: "lake" },
     { id: "swallow", name: "Чабалекей", img: "chabalekey.png", group: "forest" },
-    { id: "goose", name: "Каз", img: "goose.png", group: "lake" },
+    { id: "goose", name: "Каз", img: "goose.png", group: "domestic" },
     { id: "swan", name: "Ак куу", img: "swan.png", group: "lake" },
   ];
 
