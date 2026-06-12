@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./AnimalsExercise.css";
 import confetti from "canvas-confetti";
 
@@ -23,6 +24,7 @@ function BirdsExercise() {
   const [showWriteErrors, setShowWriteErrors] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [selectedMobileBird, setSelectedMobileBird] = useState(null);
+  const [completedSteps, setCompletedSteps] = useState([]);
 
   const [placedGroups, setPlacedGroups] = useState({
     domestic: [],
@@ -353,31 +355,70 @@ function BirdsExercise() {
     }));
   };
 
-const fireConfetti = () => {
-  confetti({
-    particleCount: 150,
-    angle: 60,
-    spread: 100,
-    origin: { x: 0, y: 0.7 },
-  });
+const TOTAL_GAMES = 9;
 
-  confetti({
-    particleCount: 150,
-    angle: 120,
-    spread: 100,
-    origin: { x: 1, y: 0.7 },
-  });
+const isCurrentStepCorrect = () => {
+  if (currentMatching) {
+    return currentMatching.left.every((item) => {
+      const rightId = currentMatching.correct[item.id];
+      return correctDots.includes(item.id) && correctDots.includes(rightId);
+    });
+  }
+
+  if (currentWriteGame) {
+    return correctWord.every(
+      (letter, index) => placedLetters[index]?.letter === letter
+    );
+  }
+
+  if (currentStep === 8) {
+    return groupAnimals.every((animal) =>
+      placedGroups[animal.group].includes(animal.id)
+    );
+  }
+
+  return false;
 };
 
-  const handleNextClick = () => {
-    if (currentStep < totalSteps - 1) {
-      setCurrentStep(currentStep + 1);
-      resetStepState();
-    } else {
-      setIsFinished(true);
-       fireConfetti();
+const getFinishResult = () => {
+  const score = completedSteps.length;
+
+  if (score >= 6) {
+    return { icon: "🏆", title: "Азаматсың!" };
+  }
+
+  if (score >= 3) {
+    return { icon: "🙂", title: "Жакшы!" };
+  }
+
+  if (score >= 1) {
+    return { icon: "😕", title: "Дагы аракет кыл!" };
+  }
+
+  return { icon: "😢", title: "Капа болбо!" };
+};
+
+ const handleNextClick = () => {
+  let updatedCompleted = completedSteps;
+
+  if (isCurrentStepCorrect() && !completedSteps.includes(currentStep)) {
+    updatedCompleted = [...completedSteps, currentStep];
+    setCompletedSteps(updatedCompleted);
+  }
+
+  if (currentStep === 8) {
+    setIsFinished(true);
+
+    if (updatedCompleted.length >= 6) {
+      fireConfetti();
     }
-  };
+
+    return;
+  }
+
+  setCurrentStep(currentStep + 1);
+  resetStepState();
+};
 
   const handleBackClick = () => {
     if (currentStep > 0) {

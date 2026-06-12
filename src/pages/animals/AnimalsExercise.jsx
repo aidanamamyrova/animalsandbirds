@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./AnimalsExercise.css";
 import { polyfill } from 'mobile-drag-drop';
 import { scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop/scroll-behaviour';
@@ -81,6 +82,7 @@ function AnimalsExercise() {
   const [placedGroups, setPlacedGroups] = useState({ domestic: [], wild: [] });
   const [groupError, setGroupError] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [completedSteps, setCompletedSteps] = useState([]);
 
   // Стейт для поддержки кликов/тачей в мобильной версии разделения по группам
   const [selectedMobileAnimal, setSelectedMobileAnimal] = useState(null);
@@ -213,15 +215,70 @@ function AnimalsExercise() {
   });
 };
 
-  const handleNextClick = () => {
-    if (currentStep === 8) {
-      setIsFinished(true);
-       fireConfetti();
-      return;
+const TOTAL_GAMES = 9;
+
+const isCurrentStepCorrect = () => {
+  if (currentMatching) {
+    return currentMatching.left.every((item) => {
+      const rightId = currentMatching.correct[item.id];
+      return correctDots.includes(item.id) && correctDots.includes(rightId);
+    });
+  }
+
+  if (currentWriteGame) {
+    return correctWord.every(
+      (letter, index) => placedLetters[index]?.letter === letter
+    );
+  }
+
+  if (currentStep === 8) {
+    return groupAnimals.every((animal) =>
+      placedGroups[animal.group].includes(animal.id)
+    );
+  }
+
+  return false;
+};
+
+const getFinishResult = () => {
+  const score = completedSteps.length;
+
+  if (score >= 6) {
+    return { icon: "🏆", title: "Азаматсың!" };
+  }
+
+  if (score >= 3) {
+    return { icon: "🙂", title: "Жакшы!" };
+  }
+
+  if (score >= 1) {
+    return { icon: "😕", title: "Дагы аракет кыл!" };
+  }
+
+  return { icon: "😢", title: "Капа болбо!" };
+};
+
+ const handleNextClick = () => {
+  let updatedCompleted = completedSteps;
+
+  if (isCurrentStepCorrect() && !completedSteps.includes(currentStep)) {
+    updatedCompleted = [...completedSteps, currentStep];
+    setCompletedSteps(updatedCompleted);
+  }
+
+  if (currentStep === 8) {
+    setIsFinished(true);
+
+    if (updatedCompleted.length >= 6) {
+      fireConfetti();
     }
-    setCurrentStep(currentStep + 1);
-    resetStepState();
-  };
+
+    return;
+  }
+
+  setCurrentStep(currentStep + 1);
+  resetStepState();
+};
 
   const handleBackClick = () => {
     if (currentStep > 0) {
@@ -406,29 +463,39 @@ function AnimalsExercise() {
     }));
   };
 
-  if (isFinished) {
-    return (
-      <div className="finish-screen">
-        <div className="finish-card">
-          <div className="finish-icon">🏆</div>
-          <h1>Азаматсың!</h1>
-          <p>Көнүгүүнүн аягы</p>
-          <div className="finish-buttons">
-            <button
-              className="restart-btn"
-              onClick={() => {
-                setCurrentStep(0);
-                setIsFinished(false);
-                resetStepState();
-              }}
-            >
-              Кайра аткаруу
-            </button>
-          </div>
+ if (isFinished) {
+  const result = getFinishResult();
+
+  return (
+    <div className="finish-screen">
+      <div className="finish-card">
+        <div className="finish-icon">{result.icon}</div>
+
+        <h1>{result.title}</h1>
+
+        <p>Упай: {completedSteps.length} / {TOTAL_GAMES}</p>
+
+        <div className="finish-buttons">
+          <button
+            className="restart-btn"
+            onClick={() => {
+              setCurrentStep(0);
+              setIsFinished(false);
+              setCompletedSteps([]);
+              resetStepState();
+            }}
+          >
+            Кайра аткаруу
+          </button>
         </div>
+
+        <Link to="/animals/birds" className="birds-link">
+          Канаттуулар бөлүмүнө өтүү →
+        </Link>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <>
